@@ -99,6 +99,9 @@ Route::group(['middleware' => 'api'], function () {
 
 
 
+        Route::get('vet/appointment/admin/list', 'Vet\AppointmentController@adminList'); 
+        Route::get('vet/appointment/animal/admin/list', 'Vet\AppointmentController@adminanimalList'); 
+        Route::get('vet/appointment/pet/admin/list', 'Vet\AppointmentController@adminpetList'); 
 
 
 

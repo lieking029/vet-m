@@ -131,7 +131,20 @@
                 <v-col cols="12" sm="6" v-else>
                 <v-card class="p-4" >
                     <v-row> 
-                      <v-col cols="12" lg="12">
+                            <v-col class="p-2 m-0" cols="12" lg="4">
+                        <v-card height="100%" width="100%" class="p-2">
+                          <v-img
+                            contain
+                            :src="
+                              form.picture
+                                ? '/storage/files/vet/animals/picture/' + form.picture
+                                : '/img/pets/a1.jpg'
+                            "
+                          >
+                          </v-img>
+                        </v-card>
+                      </v-col>
+                      <v-col cols="12" lg="8">
                         <v-row>
                           <v-col class="py-1" cols="12" lg="12">
                             <v-text-field
@@ -639,8 +652,7 @@ export default {
    
 
     getAnimalDetails(val) {  
-      if(this.form.types == 1){ 
-        console.log(this.list_petname[this.list_petname.indexOf(val) ])
+      if(this.form.types == 1){  
         this.form.breed = this.list_petname[this.list_petname.indexOf(val) ].breed;
         this.form.gender = this.list_petname[this.list_petname.indexOf(val) ].gender;
         this.form.birth_date = this.list_petname[this.list_petname.indexOf(val) ].birth_date;
@@ -650,8 +662,8 @@ export default {
         this.form.address = this.list_petname[this.list_petname.indexOf(val) ].address;
         this.form.picture = this.list_petname[this.list_petname.indexOf(val) ].picture;
       }
-      else{
-          this.form.type = this.list_petname[this.list_petname.indexOf(val) ].type;
+      else{ 
+          this.form.type = this.list_petname[this.list_petname.indexOf(val) ].type.name;
         this.form.specific_type = this.list_petname[this.list_petname.indexOf(val) ].specific_type;
         this.form.description = this.list_petname[this.list_petname.indexOf(val) ].description;
         this.form.farm_name = this.list_petname[this.list_petname.indexOf(val) ].farm_name;
@@ -660,6 +672,7 @@ export default {
         this.form.email = this.list_petname[this.list_petname.indexOf(val) ].email;
         this.form.phone = this.list_petname[this.list_petname.indexOf(val) ].phone;
         this.form.address = this.list_petname[this.list_petname.indexOf(val) ].address; 
+        this.form.picture = this.list_petname[this.list_petname.indexOf(val) ].picture;
   
       }
     }, 
@@ -748,6 +761,7 @@ export default {
         farm_name: item.details.farm_name,
         type: item.details.types.name, 
         specific_type: item.details.specific_type, 
+        picture: item.details.picture,
 
   
         owner: item.details.owner,
@@ -793,9 +807,11 @@ export default {
     },
     sub_close() {
       this.form = {
-      id: "",
+     id: "",
       pet_id: "",
       service_id: "",
+      amount: "",
+      type: "",
 
       breed: "",
       gender: "",
@@ -805,6 +821,15 @@ export default {
       phone: "",
       address: "",
       picture: "",
+      remarks: "",
+
+      specific_type: "",
+      description: "",
+      count: "",
+      farm_name: "",
+
+      types: 1,
+      descriptions: "",
       }; 
     },
 

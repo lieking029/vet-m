@@ -21,17 +21,12 @@ class MainController extends Controller
       $return = [];
       foreach (MgtAppointments::where("active", 1)->where("user_id", auth()->user()->id)->orderBy("created_at", "desc")->get()  as $key => $value) {
           $temp = [];
-          $temp['id'] = $value->id;
-
+          $temp['id'] = $value->id; 
           if($value->type == 2){
-            $temp['pet'] = MgtAnimals::where("id", $value->pet_id)->first();
-      
+            $temp['pet'] = MgtAnimals::where("id", $value->pet_id)->first(); 
           }else{
-            $temp['pet'] = MgtPets::select(["name","picture"])->where("id", $value->pet_id)->first();
-
-          }
-         
-
+            $temp['pet'] = MgtPets::select(["name","picture"])->where("id", $value->pet_id)->first(); 
+          } 
           $temp['service'] = MgtServices::select("name")->where("id", $value->service_id)->first()->name;
           $temp['amount'] = $value->amount;
           $temp['status'] = TblGenerals::where("id",$value->status)->first()->name;
@@ -45,6 +40,7 @@ class MainController extends Controller
     public function summaryCount(Request $request){
         $temp = [];
         $temp['pets'] = MgtPets::where(['user_id'=>Auth()->user()->id,"active"=>'1'])->count();
+        $temp['animals'] = MgtAnimals::where(['user_id'=>Auth()->user()->id,"active"=>'1'])->count();
         $temp['appointments'] = MgtAppointments::where(['user_id'=>Auth()->user()->id,"active"=>'1'])->count();
         $temp['orders'] = MgtSales::where(['user_id'=>Auth()->user()->id,"active"=>'1'])->count();
         return $temp;

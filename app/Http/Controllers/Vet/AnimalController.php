@@ -109,7 +109,8 @@ class AnimalController extends Controller
                  $temp['date']= $value->date;
                  $temp['description']= $value->description;
                  $temp['location']= $value->location;
-                 $temp['count']= $value->count;
+                 $temp['count']= $value->count; 
+                 $temp['picture']= $value->picture;
 
                  $temp['owner']= $value->owner;
                  $temp['email']= $value->email;
@@ -133,7 +134,7 @@ class AnimalController extends Controller
             $img = $value;
             $newfilename = $img->getClientOriginalName() . "~" . time() . '.' . $img->getClientOriginalExtension();
             $temp['imagename'] = $newfilename;
-            $img->storeAs('public/files/vet/attachment/', $newfilename);
+            $img->storeAs('public/files/vet/animals/attachment/', $newfilename);
             array_push($return, $temp);
         }
         return ['name' => $request->type, 'file' => $return];
@@ -159,7 +160,7 @@ class AnimalController extends Controller
             $img = $request->file[0];
             $newfilename = $img->getClientOriginalName() . "~" . time() . '.' . $img->getClientOriginalExtension();
             $temp['imagename'] = $newfilename;
-            $img->storeAs('public/files/vet/animal/', $newfilename); 
+            $img->storeAs('public/files/vet/animals/picture/', $newfilename); 
         return  $newfilename  ;
     }
     public function animalDropdowns(){

@@ -205,8 +205,8 @@ export default {
         this.items = [
               
           { text: "My Pets", value: result.data.pets, image: "/img/dashboard/aaaa.png" },
-          {
-            text: "Appointments",
+          { text: "My Animals", value:  result.data.animals, image: "/img/dashboard/aaaaaa.png" },
+          { text: "Appointments",
             value: result.data.appointments,
             image: "/img/dashboard/aaaaa.png",
           },

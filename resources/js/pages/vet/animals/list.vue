@@ -1,6 +1,5 @@
 <template>
-  <div> 
-
+  <div>
     <v-form ref="subForm" id="subForm">
       <!---------------------------------------------------------------------- sub category  -->
       <v-dialog v-model="sub_dialog" fullscreen>
@@ -21,54 +20,90 @@
             <v-card flat class="p-4">
               <v-row>
                 <v-col cols="12" sm="6">
-                  <v-card class="p-4">
-                    <v-row>
-                      <span><b>Animal Informations</b></span>
-                      <v-spacer></v-spacer>
-                      <v-col cols="4">
-                        <v-select
-                          :rules="formRules"
-                          v-model="form.active"
-                          dense
-                          small
-                          hide-details=""
-                          :items="list_status"
-                          item-text="name"
-                          item-value="value"
-                        >
-                          <template slot="label">
-                            Status <abbr class="text-danger">* </abbr>
-                          </template>
-                        </v-select>
-                      </v-col>
-                    </v-row>
-                    <v-row>  
-                       <v-col class="py-1" cols="12" lg="12"> 
-                             <v-text-field
-                            hide-details=""
-                            v-model="form.name"
-                            label=""
-                          >
-                            <template slot="label">
-                              <div style="font-size: 14px">Name</div>
-                            </template>
-                          </v-text-field>
-                          </v-col> 
-                          <v-col class="py-1" cols="12" lg="8"> 
-                            <v-select
-                              :rules="formRules"
-                              v-model="form.type"
-                              hide-details=""
-                              :items="list_type"
-                              item-text="name"
-                              item-value="id"
-                            >
-                              <template slot="label">
-                                Animal/s Type <abbr class="text-danger">* </abbr>
-                              </template>
-                            </v-select>
-                          </v-col> 
-                          <v-col class="py-1" cols="12" lg="4">
+                  <v-card class="p-4"> 
+                    <v-row>        <span><b>Animal Informations</b></span> 
+                      <v-col class="py-1" cols="12" lg="12">
+                        <v-row>
+                          <v-col cols="12" lg="4">
+                            <v-card width="200" height="200" class="p-2 m-2">
+                              <v-img
+                                width="190"
+                                contain
+                                height="190"
+                                :src="
+                                  form.picture
+                                    ? '/storage/files/vet/animals/picture/' +
+                                      form.picture
+                                    : '/img/pets/a1.jpg'
+                                "
+                              >
+                              </v-img>
+                              <v-card-actions>
+                                <vue-dropzone
+                                  ref="myVueDropzonex"
+                                  class="dropzonexx"
+                                  id="training_fileuploadx"
+                                  v-on:vdropzone-success-multiple="
+                                    uploadSuccessPicture
+                                  "
+                                  v-on:vdropzone-queue-complete="
+                                    uploadQueCompletePicture
+                                  "
+                                  v-on:vdropzone-error="uploadErrorPicture"
+                                  :options="dropzoneOptionsPicture"
+                                ></vue-dropzone>
+                              </v-card-actions>
+                              <br />
+                            </v-card>
+                          </v-col>
+                          <v-col class="py-1" cols="12" lg="8">
+                               <v-row>
+                                 <v-spacer></v-spacer> 
+                                <v-col cols="4">
+                                  <v-select
+                                    :rules="formRules"
+                                    v-model="form.active"
+                                    dense
+                                    small
+                                    hide-details=""
+                                    :items="list_status"
+                                    item-text="name"
+                                    item-value="value"
+                                  >
+                                    <template slot="label">
+                                      Status <abbr class="text-danger">* </abbr>
+                                    </template>
+                                  </v-select>
+                                </v-col>
+                              </v-row>
+                            <v-row>
+                              <v-col class="py-1" cols="12" lg="12">
+                                <v-text-field
+                                  hide-details=""
+                                  v-model="form.name"
+                                  label=""
+                                >
+                                  <template slot="label">
+                                    <div style="font-size: 14px">Name</div>
+                                  </template>
+                                </v-text-field>
+                              </v-col>
+                              <v-col class="py-1" cols="12" lg="12">
+                                <v-select
+                                  :rules="formRules"
+                                  v-model="form.type"
+                                  hide-details=""
+                                  :items="list_type"
+                                  item-text="name"
+                                  item-value="id"
+                                >
+                                  <template slot="label">
+                                    Animal/s Type
+                                    <abbr class="text-danger">* </abbr>
+                                  </template>
+                                </v-select>
+                               </v-col>
+                              <v-col class="py-1" cols="12" lg="6">
                                 <v-menu
                                   ref="menu"
                                   v-model="menu"
@@ -117,66 +152,73 @@
                                     </v-btn>
                                   </v-date-picker>
                                 </v-menu>
-                          </v-col>
-                         
-                          <v-col class="py-1" cols="12" lg="4">
-                          <v-text-field
-                            hide-details=""
-                            v-model="form.specific_type"
-                            label=""
-                          >
-                            <template slot="label">
-                              <div style="font-size: 14px">Specific type</div>
-                            </template>
-                          </v-text-field>
-                        </v-col>    <v-col class="py-1" cols="12" lg="6">
-                          <v-text-field
-                            hide-details=""
-                            v-model="form.farm_name"
-                            label=""
-                          >
-                            <template slot="label">
-                              <div style="font-size: 14px">Farm Name</div>
-                            </template>
-                          </v-text-field>
-                        </v-col>
-                         <v-col class="py-1" cols="12" lg="2">
-                          <v-text-field
-                            hide-details=""
-                            v-model="form.count"
-                            label=""
-                          >
-                            <template slot="label">
-                              <div style="font-size: 14px">Count</div>
-                            </template>
-                          </v-text-field>
-                        </v-col>
-
-                          <v-col class="py-1" cols="12" lg="12">
-                            <v-textarea
-                              hide-details="" rows="2"
-                              v-model="form.description"
+                              </v-col>
+                                   <v-col class="py-1" cols="12" lg="6">
+                            <v-text-field
+                              hide-details=""
+                              v-model="form.specific_type"
                               label=""
                             >
                               <template slot="label">
-                                <div style="font-size: 14px">Description</div>
+                                <div style="font-size: 14px">Specific type</div>
                               </template>
-                            </v-textarea>
-                          </v-col>
-
-                            <v-col class="py-1" cols="12" lg="12">
-                            <v-textarea
-                              hide-details="" rows="2"
-                              v-model="form.location"
+                            </v-text-field>
+                          </v-col>     <v-col class="py-1" cols="12" lg="8">
+                            <v-text-field
+                              hide-details=""
+                              v-model="form.farm_name"
                               label=""
                             >
                               <template slot="label">
-                                <div style="font-size: 14px">Location</div>
+                                <div style="font-size: 14px">Farm Name</div>
                               </template>
-                            </v-textarea>
+                            </v-text-field>
+                          </v-col>       <v-col class="py-1" cols="12" lg="4">
+                        <v-text-field
+                          hide-details=""
+                          v-model="form.count"
+                          label=""
+                        >
+                          <template slot="label">
+                            <div style="font-size: 14px">Count</div>
+                          </template>
+                        </v-text-field>
+                      </v-col>
+                              </v-row
+                            >
                           </v-col>
+
                     
-                  
+                     
+                        </v-row>
+                      </v-col>
+               
+
+                      <v-col class="py-1" cols="12" lg="12">
+                        <v-textarea
+                          hide-details=""
+                          rows="2"
+                          v-model="form.description"
+                          label=""
+                        >
+                          <template slot="label">
+                            <div style="font-size: 14px">Description</div>
+                          </template>
+                        </v-textarea>
+                      </v-col>
+
+                      <v-col class="py-1" cols="12" lg="12">
+                        <v-textarea
+                          hide-details=""
+                          rows="2"
+                          v-model="form.location"
+                          label=""
+                        >
+                          <template slot="label">
+                            <div style="font-size: 14px">Location</div>
+                          </template>
+                        </v-textarea>
+                      </v-col>
                     </v-row>
                     <hr />
                     <span><b>My Owner details</b></span>
@@ -235,7 +277,6 @@
                 </v-col>
                 <v-col cols="12" sm="6">
                   <v-expansion-panels v-model="panel" multiple>
-               
                     <v-expansion-panel>
                       <v-expansion-panel-header
                         ><b
@@ -282,7 +323,9 @@
                                 >
                                   <td>
                                     <a
-                                      :href="'/storage/files/animal/attachment' + val"
+                                      :href="
+                                        '/storage/files/animals/attachment' + val
+                                      "
                                       download
                                     >
                                       {{ val.split("~")[0] }}
@@ -436,40 +479,38 @@
     </v-form>
 
     <!---------------------------------------------------------------------- datatable  -->
-  
-
 
     <v-data-table
       dense
-      height="455" class="border table-striped thead-dark"
-      :loading="progressBar"  fixed-header
+      height="455"
+      class="border table-striped thead-dark"
+      :loading="progressBar"
+      fixed-header
       :headers="header"
       :items="data"
     >
       <template v-slot:top>
-        <v-card-actions> 
-
+        <v-card-actions>
           <v-btn
             color="#00794b"
             depressed
             style="text-transform: none"
-            dark 
+            dark
             @click="sub_dialog = true"
           >
-            <v-icon>mdi-plus</v-icon> New  
+            <v-icon>mdi-plus</v-icon> New
           </v-btn>
 
           <v-spacer></v-spacer>
-          
+
           <v-col class="py-0 pl-0" xl="6" lg="6" cols="12">
             <v-text-field
               v-model="search"
               small
-              outlined 
+              outlined
               dense
               hide-details=""
-            
-            label="Search (Name, Breed or Owner)"
+              label="Search (Name, Breed or Owner)"
               @keyup="getData"
             ></v-text-field>
           </v-col>
@@ -477,27 +518,32 @@
             color="orange"
             style="text-transform: none"
             depressed
-            small text
+            small
+            text
             dark
             @click="getData"
             ><v-icon>mdi-refresh</v-icon></v-btn
           >
         </v-card-actions>
       </template>
-    <template v-slot:[`item.type`]="{ item }">
-      <b>{{ item.name }}</b><br>
-      {{ item.type.name }}<br>
-      <small>{{ item.count }}</small>
+      <template v-slot:[`item.type`]="{ item }">
+        <b>{{ item.name }}</b
+        ><br />
+        {{ item.type.name }}<br />
+        <small>{{ item.count }}</small>
       </template>
-
 
       <template v-slot:[`item.farm_name`]="{ item }">
-      {{ item.farm_name }}<br>
-      <small>{{ item.location }}</small>
+        {{ item.farm_name }}<br />
+        <small>{{ item.location }}</small>
       </template>
 
-       <template v-slot:[`item.owner`]="{ item }">
-     <small>  Owner: {{ item.owner }}<br> Address: {{ item.address }} <br> Phone #: {{ item.phone }} /   {{ item.email }}</small>
+      <template v-slot:[`item.owner`]="{ item }">
+        <small>
+          Owner: {{ item.owner }}<br />
+          Address: {{ item.address }} <br />
+          Phone #: {{ item.phone }} / {{ item.email }}</small
+        >
       </template>
 
       <template v-slot:[`item.id`]="{ item }">
@@ -516,7 +562,7 @@
           dark
           v-if="item.active == 2"
           @click="sub_ActiveItem(item)"
-          ><v-icon>mdi-checkbox-marked-outline</v-icon> 
+          ><v-icon>mdi-checkbox-marked-outline</v-icon>
         </v-btn>
         <v-btn
           color="danger"
@@ -524,11 +570,9 @@
           dark
           v-if="item.active == 1"
           @click="sub_ActiveItem(item)"
-          ><v-icon>mdi-close-circle</v-icon> 
+          ><v-icon>mdi-close-circle</v-icon>
         </v-btn>
       </template>
-
-   
     </v-data-table>
   </div>
 </template>
@@ -570,7 +614,7 @@ export default {
     menu: false,
     hover: false,
     search: "",
-    group: "", 
+    group: "",
     veterinarians: [{}],
     list_type: [],
     remarks: [{}],
@@ -596,7 +640,7 @@ export default {
 
     // sub category
     sub_dialog: false,
-    header: [ 
+    header: [
       { width: "20%", text: "Name", value: "type", sortable: false },
       { width: "10%", text: "Farm", value: "farm_name", sortable: false },
       { width: "45%", text: "Owner", value: "owner", sortable: false },
@@ -610,22 +654,23 @@ export default {
     ],
     form: {
       id: "",
-      name: '',
-    farm_name:"",
-    type:"",
-    specific_type: "",
-    description: "",
-    location: "",
-    count:"",
+      name: "",
+      farm_name: "",
+      type: "",
+      specific_type: "",
+      description: "",
+      location: "",
+      count: "",
+      picture: "",
 
-    owner:"",
-    email:"",
-    address:"",
-    phone:"",
-    veterinarians: [],
-    attachment: [],
-    remarks: [],
-    active: 1
+      owner: "",
+      email: "",
+      address: "",
+      phone: "",
+      veterinarians: [],
+      attachment: [],
+      remarks: [],
+      active: 1,
     },
 
     dropzoneOptions: {
@@ -658,6 +703,21 @@ export default {
 
   // functions
   methods: {
+
+      uploadSuccessPicture: function (file, result) {
+      this.form.picture = result;
+    },
+    uploadQueCompletePicture: function (file) {
+      this.$refs.myVueDropzonex.removeAllFiles(file);
+    },
+    uploadErrorPicture: function (file, result) {
+      this.$refs.myVueDropzonex.removeAllFiles(file);
+      Swal.fire({
+        type: "warning",
+        title: "Uploading Failed.",
+        html: result,
+      });
+    },
     uploadSuccess: function (file, result) {
       for (var key in result["file"]) {
         this.form.attachment.push(result["file"][key].imagename);
@@ -726,7 +786,6 @@ export default {
         html: result,
       });
     },
- 
 
     AddFieldRemarks(id) {
       this.remarks.push({});
@@ -758,14 +817,12 @@ export default {
           this.progressBar = false;
         });
     },
-      async getDropdown() {
+    async getDropdown() {
       this.progressBar = true;
-      await axios
-        .get("/api/vet/animals/dropdowns")
-        .then((result) => {
-          this.list_type = result.data;
-          this.progressBar = false;
-        });
+      await axios.get("/api/vet/animals/dropdowns").then((result) => {
+        this.list_type = result.data;
+        this.progressBar = false;
+      });
     },
 
     async store() {
@@ -790,8 +847,8 @@ export default {
             return data;
           },
           allowOutsideClick: () => !Swal.isLoading(),
-        }).then((result) => { 
-          console.log(result.value)
+        }).then((result) => {
+          console.log(result.value);
           if (result.value) {
             this.getData();
             this.sub_close();
@@ -807,9 +864,9 @@ export default {
         });
       }
     },
-    sub_editItem(item) { 
+    sub_editItem(item) {
       this.sub_dialog = true;
-      this.editedIndex = this.data.indexOf(item); 
+      this.editedIndex = this.data.indexOf(item);
       this.veterinarians = [];
       this.attachment = [];
       this.remarks = [];
@@ -819,7 +876,7 @@ export default {
           this.form[key] = parseInt(item[key]);
         }
         // if (key == "type") {
-        
+
         //   this.form[key] =  item[key]['id'] ;
         // }
         if (key == "veterinarians") {
@@ -837,7 +894,7 @@ export default {
           for (let index = 0; index < this.form[key].length; index++) {
             this.AddFieldRemarks();
           }
-        } 
+        }
       }
       this.getAge();
     },
@@ -883,22 +940,22 @@ export default {
       this.form = {
         id: "",
         name: "",
-        farm_name:"",
-        type:"",
+        farm_name: "",
+        type: "",
         specific_type: "",
         description: "",
         location: "",
-        count:"",
+        count: "",
 
-        owner:"",
-        email:"",
-        address:"",
-        phone:"",
+        owner: "",
+        email: "",
+        address: "",
+        phone: "",
         veterinarians: [],
         attachment: [],
         remarks: "",
-        active: 1
-      }; 
+        active: 1,
+      };
       this.veterinarians = [];
       this.attachment = [];
       this.remarks = [];

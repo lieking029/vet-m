@@ -22,7 +22,7 @@ class AppointmentController extends Controller
 
         $return = []; 
         
-        foreach (MgtAppointments::where("active", 1)->orderBy("created_at", "desc")->get()  as $key => $value) {
+        foreach (MgtAppointments::where("active", 1)->where("user_id",auth()->user()->id)->orderBy("created_at", "desc")->get()  as $key => $value) {
             $temp = [];
             if($value->type == 1){
                 $details = MgtPets::where("id", $value->ref_id)->first();  
@@ -73,36 +73,36 @@ class AppointmentController extends Controller
     }
     public function  animalList()
     {
-            return MgtAnimals::where(["active"=> 1,"user_id"=>auth()->user()->id])->get();
+            // return MgtAnimals::where(["active"=> 1,"user_id"=>auth()->user()->id])->get();
        
  
-        // $return = [];
-        // foreach ( $tbl->where(["user_id"=>auth()->user()->id])->where('active',1)->get() as $key => $value) {
-        //    $temp=[]; 
-        //    $temp['id']= $value->id;
-        //          $temp['farm_name']= $value->farm_name;
-        //          $temp['name'] = $value->name;
-        //          $temp['type'] = TblGenerals::where("id",$value->type)->first()->name;
-        //          $temp['specific_type']= $value->specific_type;
-        //          $temp['date']= $value->date;
-        //          $temp['description']= $value->description;
-        //          $temp['location']= $value->location;
-        //          $temp['count']= $value->count;
+        $return = [];
+        foreach ( MgtAnimals::where(["user_id"=>auth()->user()->id])->where('active',1)->get() as $key => $value) {
+           $temp=[]; 
+           $temp['id']= $value->id;
+                 $temp['farm_name']= $value->farm_name;
+                 $temp['name'] = $value->name;
+                 $temp['type'] = TblGenerals::where("id",$value->type)->first();
+                 $temp['specific_type']= $value->specific_type;
+                 $temp['date']= $value->date;
+                 $temp['description']= $value->description;
+                 $temp['location']= $value->location;
+                 $temp['count']= $value->count;
 
-        //          $temp['owner']= $value->owner;
-        //          $temp['email']= $value->email;
-        //          $temp['address']= $value->address;
-        //          $temp['phone']= $value->phone;
+                 $temp['owner']= $value->owner;
+                 $temp['email']= $value->email;
+                 $temp['address']= $value->address;
+                 $temp['phone']= $value->phone;
 
-        //          $temp['veterinarians']= json_decode($value->veterinarians); 
-        //          $temp['attachment']= json_decode($value->attachment);
-        //          $temp['remarks'] = json_decode($value->remarks);
+                 $temp['veterinarians']= json_decode($value->veterinarians); 
+                 $temp['attachment']= json_decode($value->attachment);
+                 $temp['remarks'] = json_decode($value->remarks);
 
                  
-        //          $temp['active']= $value->active;
-        //         array_push($return, $temp);
-        // } 
-        // return $return;
+                 $temp['active']= $value->active;
+                array_push($return, $temp);
+        } 
+        return $return;
     }
     public function  petList()
     {
@@ -133,4 +133,77 @@ class AppointmentController extends Controller
             ['status' => $request->status]
         );
     }
+
+
+
+
+    public function adminList(Request $request)
+    {
+
+        $return = []; 
+        
+        foreach (MgtAppointments::where("active", 1)->orderBy("created_at", "desc")->get()  as $key => $value) {
+            $temp = [];
+            if($value->type == 1){
+                $details = MgtPets::where("id", $value->ref_id)->first();  
+            }else{
+                $details = MgtAnimals::with("types")->where("id", $value->ref_id)->first(); 
+            }
+          
+          
+            $temp['id'] = $value->id;
+            $temp['type'] = $value->type;
+            $temp['details'] = $details;
+            $temp['service'] = MgtServices::where("id", $value->service_id)->first();
+            $temp['amount'] = $value->amount;
+            $temp['status'] = TblGenerals::where("id",$value->status)->first() ;
+            $temp['remarks'] = $value->remarks;
+            $temp['dated'] = date("Y-m-d", strtotime($value->dated));
+            $temp['owner'] = $details->owner;
+        
+         
+          
+            array_push($return, $temp);
+        }
+        return $return;
+    }
+    public function  adminanimalList()
+    { 
+ 
+        $return = [];
+        foreach ( MgtAnimals::get() as $key => $value) {
+           $temp=[]; 
+           $temp['id']= $value->id;
+                 $temp['farm_name']= $value->farm_name;
+                 $temp['name'] = $value->name;
+                 $temp['type'] = TblGenerals::where("id",$value->type)->first();
+                 $temp['specific_type']= $value->specific_type;
+                 $temp['date']= $value->date;
+                 $temp['description']= $value->description;
+                 $temp['location']= $value->location;
+                 $temp['count']= $value->count;
+
+                 $temp['owner']= $value->owner;
+                 $temp['email']= $value->email;
+                 $temp['address']= $value->address;
+                 $temp['phone']= $value->phone;
+
+                 $temp['veterinarians']= json_decode($value->veterinarians); 
+                 $temp['attachment']= json_decode($value->attachment);
+                 $temp['remarks'] = json_decode($value->remarks);
+
+                 
+                 $temp['active']= $value->active;
+                array_push($return, $temp);
+        } 
+        return $return;
+    }
+    public function  adminpetList()
+    {
+        return MgtPets::get();
+    }
+
+
+
+
 }

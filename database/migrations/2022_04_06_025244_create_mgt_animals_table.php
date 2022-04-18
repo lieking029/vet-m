@@ -23,6 +23,7 @@ class CreateMgtAnimalsTable extends Migration
             $table->text('description')->nullable();   
             $table->text('location')->nullable();   
             $table->text('count')->nullable();    
+            $table->text('picture')->nullable();  
              
             $table->text('owner')->nullable();   
             $table->text('email')->nullable();   

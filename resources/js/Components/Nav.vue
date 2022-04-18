@@ -51,7 +51,7 @@
         </v-list-item>
 
            <v-list-item
-          v-if="user.permissionslist.includes('My Pets')"
+          v-if="user.permissionslist.includes('My Farm')"
          active-class="primary text-white"
           :to="{ name: 'animals' }"
           style="text-decoration: none"
@@ -82,6 +82,7 @@
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
+
 
                <v-list-item
           v-if="user.permissionslist.includes('Appointment')"

@@ -11,15 +11,15 @@
               >mdi-close
             </v-icon>
           </v-toolbar>
-          <!-- dialog content -->
+        <!-- dialog content -->
           <v-card-text
             class="pt-2"
             style="overflow-y: auto; background-color: #dadcdc"
           >
             <v-card flat class="p-2">
-              <v-row no-gutters>
-                <v-col cols="12" sm="6">
-                  <v-card class="p-4">
+              <v-row no-gutters> 
+                <v-col cols="12" sm="6" v-if="form.types == '1'"> 
+                  <v-card class="p-4" >
                     <v-row>
                       <v-col class="p-2 m-0" cols="12" lg="4">
                         <v-card height="100%" width="100%" class="p-2">
@@ -27,7 +27,7 @@
                             contain
                             :src="
                               form.picture
-                                ? '/storage/files/vet/animal/' + form.picture
+                                ? '/storage/files/vet/pets/picture/' + form.picture
                                 : '/img/pets/a1.jpg'
                             "
                           >
@@ -127,12 +127,163 @@
                     </v-row>
                   </v-card>
                 </v-col>
+                <v-col cols="12" sm="6" v-else>
+                <v-card class="p-4" >
+                    <v-row> 
+                            <v-col class="p-2 m-0" cols="12" lg="4">
+                        <v-card height="100%" width="100%" class="p-2">
+                          <v-img
+                            contain
+                            :src="
+                              form.picture
+                                ? '/storage/files/vet/animals/picture/' + form.picture
+                                : '/img/pets/a1.jpg'
+                            "
+                          >
+                          </v-img>
+                        </v-card>
+                      </v-col>
+                      <v-col cols="12" lg="8">
+                        <v-row>
+                          <v-col class="py-1" cols="12" lg="12">
+                            <v-text-field
+                              hide-details=""
+                              disabled
+                              v-model="form.type"
+                              label=""
+                            >
+                              <template slot="label">
+                                <div style="font-size: 14px">Type</div>
+                              </template>
+                            </v-text-field>
+                          </v-col>
+                          <v-col class="py-1" cols="12" lg="8">
+                            <v-text-field
+                              :rules="formRules"
+                              v-model="form.specific_type"
+                              hide-details=""
+                              disabled
+                            >
+                              <template slot="label"> Specific Type </template>
+                            </v-text-field>
+                          </v-col>
+                             <v-col class="py-1" cols="12" lg="4">
+                            <v-text-field
+                              :rules="formRules"
+                              v-model="form.count"
+                              hide-details=""
+                              disabled
+                            >
+                              <template slot="label"> Count </template>
+                            </v-text-field>
+                          </v-col>
+                            <v-col class="py-1" cols="12" lg="12">
+                            <v-text-field
+                              :rules="formRules"
+                              v-model="form.farm_name"
+                              hide-details=""
+                              disabled
+                            >
+                              <template slot="label">
+                                <div style="font-size: 14px">Farm Name </div>
+                              </template>
+                            </v-text-field>
+                          </v-col>
+                          <v-col class="py-1" cols="12" lg="12">
+                            <v-text-field
+                              :rules="formRules"
+                              v-model="form.description"
+                              hide-details=""
+                              disabled
+                            >
+                              <template slot="label">
+                                <div style="font-size: 14px">Description </div>
+                              </template>
+                            </v-text-field>
+                          </v-col>
+                          
+                        </v-row>
+                      </v-col>
+                    </v-row>
+
+                    <v-row>
+                      <v-col class="py-1" cols="12" lg="12">
+                        <v-text-field
+                          disabled
+                          hide-details=""
+                          v-model="form.owner"
+                          label=""
+                        >
+                          <template slot="label">
+                            <div style="font-size: 14px">Owner Name</div>
+                          </template>
+                        </v-text-field>
+                      </v-col>
+
+                      <v-col class="py-1" cols="12" lg="6">
+                        <v-text-field
+                          hide-details=""
+                          disabled
+                          v-model="form.email"
+                          label=""
+                        >
+                          <template slot="label">
+                            <div style="font-size: 14px">Email</div>
+                          </template>
+                        </v-text-field>
+                      </v-col>
+                      <v-col class="py-1" cols="12" lg="6">
+                        <v-text-field
+                          hide-details=""
+                          disabled
+                          v-model="form.phone"
+                          label=""
+                        >
+                          <template slot="label">
+                            <div style="font-size: 14px">Phone #</div>
+                          </template>
+                        </v-text-field>
+                      </v-col>
+                      <v-col class="py-1" cols="12" lg="12">
+                        <v-text-field
+                          hide-details=""
+                          disabled
+                          v-model="form.address"
+                          label=""
+                        >
+                          <template slot="label">
+                            <div style="font-size: 14px">Address</div>
+                          </template>
+                        </v-text-field>
+                      </v-col>
+                    </v-row>
+                  </v-card>
+
+
+                </v-col> 
+
                 <v-col cols="12" lg="6">
                   <v-card-text>
                     <v-row>
+                       <v-col class="py-1" cols="12" lg="12">
+                        <v-select
+                          :rules="formRules"
+                          v-model="form.types" outlined dense
+                          hide-details="" disabled
+                          :items="list_type"
+                          @change="getAnimals"
+                          item-text="name" 
+                          item-value="id" 
+                        >
+                          <template slot="label">
+                            <div style="font-size: 14px">Type
+                            </div>
+                          </template>
+                        </v-select>
+                      </v-col>
                       <v-col class="py-1" cols="12" lg="12">
                         <v-menu
-                          ref="menu" disabled
+                          ref="menu" 
                           v-model="menu"
                           :close-on-content-click="false"
                           :return-value.sync="form.date"
@@ -141,19 +292,19 @@
                           min-width="auto"
                         >
                           <template v-slot:activator="{ on, attrs }">
-                            <v-text-field disabled
+                            <v-text-field
                               v-model="form.dated"
                               dense outlined
-                              :rules="formRules"
+                              :rules="formRules" 
                               hide-details=""
-                              readonly
+                              readonly disabled
                               v-bind="attrs"
                               v-on="on"
                             >
                               <template slot="label">
                                 <div style="font-size: 14px">
                                   Appointment Date
-                                <abbr class="text-danger">* </abbr>
+                              
                                 </div>
                               </template>
                             </v-text-field>
@@ -177,35 +328,35 @@
                           </v-date-picker>
                         </v-menu>
                       </v-col>
-                      <v-col class="py-1" cols="12" lg="12">
-                        <v-select
-                          :rules="formRules" disabled
+                      <v-col class="py-1" cols="12" lg="12"  >
+                        <v-autocomplete
+                          :rules="formRules"
                           v-model="form.pet_id" outlined dense
                           hide-details=""
-                          :items="list_petname"
+                          :items="list_petname" disabled
                           @change="getAnimalDetails"
                           item-text="name"
                           return-object
                         >
                           <template slot="label">
-                            <div style="font-size: 14px">Pet Name
-                            <abbr class="text-danger">* </abbr></div>
+                            <div style="font-size: 14px">Pet / Animal
+                          </div>
                           </template>
-                        </v-select>
+                        </v-autocomplete>
                       </v-col>
+                      
                       <v-col class="py-1" cols="12" lg="12">
                         <v-autocomplete
                           :rules="formRules" disabled
                           v-model="form.service_id" outlined
-                          hide-details="" dense
-                          @change="getServiceDetails"
+                          hide-details="" dense 
                           :items="list_services"
                           item-text="name"
                           item-value="id"
                         >
                           <template slot="label">
                             <div style="font-size: 14px;">Service 
-                            <abbr class="text-danger">* </abbr></div>
+                            </div>
                           </template>
                         </v-autocomplete>
                       </v-col>
@@ -224,11 +375,21 @@
                         </v-textarea>
                       </v-col>
                     </v-row>
-                    <v-row>
-                      <v-col>
+                    <v-row >
+                      <v-col >
+                          <v-row no-gutters>
+                          <v-col cols="6">Service Descriptions:</v-col>
+                          <v-col cols="6" v-if="form.amount"
+                            > 
+                              {{
+                                form.descriptions
+                                
+                              }}</v-col
+                          >
+                        </v-row>
                         <v-row no-gutters>
-                          <v-col cols="3">Service Fee:</v-col>
-                          <v-col cols="8" v-if="form.amount"
+                          <v-col cols="6">Service Fee:</v-col>
+                          <v-col cols="6" v-if="form.amount"
                             >Php
                               {{
                                 form.amount
@@ -237,8 +398,9 @@
                               }}</v-col
                           >
                         </v-row>
+                           
                       </v-col>
-                        <v-col class="py-1" cols="12" lg="12">
+                         <v-col class="py-1" cols="12" lg="12">
                         <v-select
                           :rules="formRules"  
                           v-model="form.status" outlined dense
@@ -254,7 +416,8 @@
                         </v-select>
                       </v-col>
                     </v-row>
-                  </v-card-text>
+                    
+                       </v-card-text>
                   <v-card-actions> 
                     <v-spacer></v-spacer>
                     <v-btn color="success"  @click="changeStatus"><v-icon>mdi-save</v-icon>Save</v-btn>
@@ -277,14 +440,7 @@
         :headers="header"
         :items="data"
       > 
-        <template v-slot:[`item.pet`]="{ item }">
-          <v-img
-            contain
-            width="70"
-            height="70"
-            :src="'/storage/files/vet/animal/' + item.pet.picture"
-          ></v-img>
-        </template>
+    
             <template v-slot:[`item.service`]="{ item }">
         {{item.service.name }}<br>
         <small>{{ item.service.handle_by }}</small>
@@ -292,13 +448,13 @@
        <template v-slot:[`item.status.name`]="{ item }"> 
         <v-chip color="orange" dark>{{ item.status.name }}</v-chip>
         </template>
-        <template v-slot:[`item.pet.owner`]="{ item }">
+        <template v-slot:[`item.owner`]="{ item }">
           <small>
-            <strong>Pet name: {{ item.pet.name }}</strong
+            <strong>Pet name: {{ item.details.name }}</strong
             ><br />
-            Owner: {{ item.pet.owner }}<br />
-            Address: {{ item.pet.address }} <br />
-            Phone #: {{ item.pet.phone }} / {{ item.pet.email }}</small
+            Owner: {{ item.details.owner }}<br />
+            Address: {{ item.details.address }} <br />
+            Phone #: {{ item.details.phone }} / {{ item.details.email }}</small
           >
         </template>
 
@@ -349,6 +505,7 @@ export default {
     menu: false,
     list_petname: [],
     list_services: [],
+    list_type: [{name: 'My Pets', id: 1},{name: 'My Farm Animals', id: 2}],
     list_status: [],
     editedIndex: -1,
     formRules: [(v) => !!v || "This is required"],
@@ -363,10 +520,9 @@ export default {
 
     // sub category
     sub_dialog: false,
-    header: [
-      { width: "5%", text: "Image", value: "pet", sortable: false },
+    header: [ 
       { width: "20%", text: "Service", value: "service", sortable: false },
-      { width: "40%", text: "Owner", value: "pet.owner", sortable: false },
+      { width: "40%", text: "Owner", value: "owner", sortable: false },
       { width: "15%", text: "Status", value: "status.name", sortable: false },
 
       {
@@ -376,11 +532,12 @@ export default {
         sortable: false,
       },
     ],
-    form: {
+   form: {
       id: "",
       pet_id: "",
       service_id: "",
       amount: "",
+      type: "",
 
       breed: "",
       gender: "",
@@ -390,8 +547,15 @@ export default {
       phone: "",
       address: "",
       picture: "",
-      status: "",
       remarks: "",
+
+      specific_type: "",
+      description: "",
+      count: "",
+      farm_name: "",
+
+      types: 1,
+      descriptions: "",
     },
   }),
 
@@ -400,7 +564,8 @@ export default {
     this.getData();
     this.getAnimals();
     this.getServiceList(); 
-    this.getStatusList();
+    this.getStatusList(); 
+  
   },
 
   // functions
@@ -409,7 +574,7 @@ export default {
     async getData() {
       this.progressBar = true;
       await axios
-        .get("/api/vet/appointment/list", {
+        .get("/api/vet/appointment/admin/list", {
           params: {
             search: this.search,
           },
@@ -420,26 +585,49 @@ export default {
         });
     },
 
+
     async getAnimals() { 
+      var url = '';
+      if(this.form.types == 1){
+        url = "/api/vet/appointment/pet/admin/list";
+      }else{
+        url = "/api/vet/appointment/animal/admin/list";
+      }
       await axios
-        .get("/api/vet/appointment/animal/list")
-        .then((result) => {  
+        .get(url)
+        .then((result) => {    
           this.list_petname = result.data; 
         });
     },
     getAnimalDetails(val) {   
-      this.form.breed = this.list_petname[this.list_petname.indexOf(val) ].breed;
-      this.form.gender = this.list_petname[this.list_petname.indexOf(val) ].gender;
-      this.form.birth_date = this.list_petname[this.list_petname.indexOf(val) ].birth_date;
-      this.form.owner = this.list_petname[this.list_petname.indexOf(val) ].owner;
-      this.form.email = this.list_petname[this.list_petname.indexOf(val) ].email;
-      this.form.phone = this.list_petname[this.list_petname.indexOf(val) ].phone;
-      this.form.address = this.list_petname[this.list_petname.indexOf(val) ].address;
-      this.form.picture = this.list_petname[this.list_petname.indexOf(val) ].picture; 
+      if(this.form.types == 1){  
+        this.form.breed = this.list_petname[this.list_petname.indexOf(val) ].breed;
+        this.form.gender = this.list_petname[this.list_petname.indexOf(val) ].gender;
+        this.form.birth_date = this.list_petname[this.list_petname.indexOf(val) ].birth_date;
+        this.form.owner = this.list_petname[this.list_petname.indexOf(val) ].owner;
+        this.form.email = this.list_petname[this.list_petname.indexOf(val) ].email;
+        this.form.phone = this.list_petname[this.list_petname.indexOf(val) ].phone;
+        this.form.address = this.list_petname[this.list_petname.indexOf(val) ].address;
+        this.form.picture = this.list_petname[this.list_petname.indexOf(val) ].picture;
+      }
+      else{ 
+          this.form.type = this.list_petname[this.list_petname.indexOf(val) ].type.name;
+        this.form.specific_type = this.list_petname[this.list_petname.indexOf(val) ].specific_type;
+        this.form.description = this.list_petname[this.list_petname.indexOf(val) ].description;
+        this.form.farm_name = this.list_petname[this.list_petname.indexOf(val) ].farm_name;
+        this.form.count = this.list_petname[this.list_petname.indexOf(val) ].count;
+        this.form.owner = this.list_petname[this.list_petname.indexOf(val) ].owner;
+        this.form.email = this.list_petname[this.list_petname.indexOf(val) ].email;
+        this.form.phone = this.list_petname[this.list_petname.indexOf(val) ].phone;
+        this.form.address = this.list_petname[this.list_petname.indexOf(val) ].address; 
+        this.form.picture = this.list_petname[this.list_petname.indexOf(val) ].picture;
+      } 
+      
     }, 
     async getServiceList() { 
-      await axios.get("/api/vet/appointment/service/list").then((result) => {
+      await axios.get("/api/vet/appointment/service/list").then((result) => { 
         this.list_services = result.data; 
+        
       });
     },    
     async getStatusList() { 
@@ -447,10 +635,7 @@ export default {
         this.list_status = result.data; 
       });
     }, 
-    getServiceDetails(val) {
-      this.form.amount = this.list_services[val].amount;
-    },
-
+ 
     async store() {
       if (this.$refs.subForm.validate()) {
         await Swal.fire({
@@ -473,8 +658,7 @@ export default {
             return data;
           },
           allowOutsideClick: () => !Swal.isLoading(),
-        }).then((result) => { 
-          console.log(result.value)
+        }).then((result) => {  
           if (result.value) {
             this.getData();
             this.sub_close();
@@ -490,27 +674,57 @@ export default {
         });
       }
     },
-    sub_editItem(item) {  
+      sub_editItem(item) {  
       this.sub_dialog = true;
-      this.editedIndex = this.data.indexOf(item);  
-      this.form = {
+      this.editedIndex = this.data.indexOf(item); 
+
+      if(item.type == 1){
+        this.form = {
         id: item.id,
-        pet_id: item.pet ,
+        types: item.type,
+        pet_id: item.details,
         service_id: item.service.id,
         amount:  item.amount,
         dated:  item.dated,
 
-        breed: item.pet.breed,
-        gender: item.pet.gender,
-        birth_date: item.pet.birth_date,
-        owner: item.pet.owner,
-        email: item.pet.email,
-        phone: item.pet.phone,
-        address: item.pet.address,
-        picture: item.pet.picture,
-        status: item.status.id,
+        breed: item.details.breed,
+        gender: item.details.gender,
+        birth_date: item.details.birth_date,
+        owner: item.details.owner,
+        email: item.details.email,
+        phone: item.details.phone,
+        address: item.details.address,
+        picture: item.details.picture,
         remarks: item.remarks,
-      };   
+      }; 
+      }else{
+          this.form = {
+        id: item.id,
+        types: item.type,
+        pet_id: item.details ,
+        service_id: item.service.id,
+        amount:  item.amount,
+        dated:  item.dated,
+        remarks: item.remarks,
+        count:  item.details.count,
+        description: item.details.description,
+        farm_name: item.details.farm_name,
+        type: item.details.types.name, 
+        specific_type: item.details.specific_type, 
+        picture: item.details.picture,
+
+  
+        owner: item.details.owner,
+        email: item.details.email,
+        phone: item.details.phone,
+        address: item.details.address,  
+      };  
+      this.form.descriptions = item.service.description;
+      }
+  
+        this.getAnimals()
+   
+       
        
     },
 
@@ -543,9 +757,11 @@ export default {
     },
     sub_close() {
       this.form = {
-      id: "",
+    id: "",
       pet_id: "",
       service_id: "",
+      amount: "",
+      type: "",
 
       breed: "",
       gender: "",
@@ -555,7 +771,15 @@ export default {
       phone: "",
       address: "",
       picture: "",
-      status: "",
+      remarks: "",
+
+      specific_type: "",
+      description: "",
+      count: "",
+      farm_name: "",
+
+      types: 1,
+      descriptions: "",
       }; 
     },
 
