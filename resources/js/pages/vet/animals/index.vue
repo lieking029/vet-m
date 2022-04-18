@@ -3,7 +3,7 @@
     <v-container>
        <v-row>
         <v-col class="text-white">
-          <h2 >My Animals</h2>
+          <h2>My Animal/s daw</h2>
         </v-col>
       </v-row>
       <hr class="m-2 white" />
