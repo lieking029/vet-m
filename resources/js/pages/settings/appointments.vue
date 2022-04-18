@@ -1,0 +1,593 @@
+<template>
+  <div>
+  
+     <v-dialog v-model="sub_dialog" width="900">
+        <!-- dialog body -->
+        <v-card id="dialog" style="background-color: #dadcdc">
+          <v-toolbar color="primary" dark>
+             Appointment details
+            <v-spacer></v-spacer>
+            <v-icon class="float-right" text @click="sub_dialog = false"
+              >mdi-close
+            </v-icon>
+          </v-toolbar>
+          <!-- dialog content -->
+          <v-card-text
+            class="pt-2"
+            style="overflow-y: auto; background-color: #dadcdc"
+          >
+            <v-card flat class="p-2">
+              <v-row no-gutters>
+                <v-col cols="12" sm="6">
+                  <v-card class="p-4">
+                    <v-row>
+                      <v-col class="p-2 m-0" cols="12" lg="4">
+                        <v-card height="100%" width="100%" class="p-2">
+                          <v-img
+                            contain
+                            :src="
+                              form.picture
+                                ? '/storage/files/vet/animal/' + form.picture
+                                : '/img/pets/a1.jpg'
+                            "
+                          >
+                          </v-img>
+                        </v-card>
+                      </v-col>
+                      <v-col cols="12" lg="8">
+                        <v-row>
+                          <v-col class="py-1" cols="12" lg="12">
+                            <v-text-field
+                              hide-details=""
+                              disabled
+                              v-model="form.breed"
+                              label=""
+                            >
+                              <template slot="label">
+                                <div style="font-size: 14px">Breed</div>
+                              </template>
+                            </v-text-field>
+                          </v-col>
+                          <v-col class="py-1" cols="12" lg="12">
+                            <v-text-field
+                              :rules="formRules"
+                              v-model="form.gender"
+                              hide-details=""
+                              disabled
+                            >
+                              <template slot="label"> Gender </template>
+                            </v-text-field>
+                          </v-col>
+                          <v-col class="py-1" cols="12" lg="12">
+                            <v-text-field
+                              :rules="formRules"
+                              v-model="form.birth_date"
+                              hide-details=""
+                              disabled
+                            >
+                              <template slot="label">
+                                <div style="font-size: 14px">Birthdate</div>
+                              </template>
+                            </v-text-field>
+                          </v-col>
+                        </v-row>
+                      </v-col>
+                    </v-row>
+
+                    <v-row>
+                      <v-col class="py-1" cols="12" lg="12">
+                        <v-text-field
+                          disabled
+                          hide-details=""
+                          v-model="form.owner"
+                          label=""
+                        >
+                          <template slot="label">
+                            <div style="font-size: 14px">Owner Name</div>
+                          </template>
+                        </v-text-field>
+                      </v-col>
+
+                      <v-col class="py-1" cols="12" lg="6">
+                        <v-text-field
+                          hide-details=""
+                          disabled
+                          v-model="form.email"
+                          label=""
+                        >
+                          <template slot="label">
+                            <div style="font-size: 14px">Email</div>
+                          </template>
+                        </v-text-field>
+                      </v-col>
+                      <v-col class="py-1" cols="12" lg="6">
+                        <v-text-field
+                          hide-details=""
+                          disabled
+                          v-model="form.phone"
+                          label=""
+                        >
+                          <template slot="label">
+                            <div style="font-size: 14px">Phone #</div>
+                          </template>
+                        </v-text-field>
+                      </v-col>
+                      <v-col class="py-1" cols="12" lg="12">
+                        <v-text-field
+                          hide-details=""
+                          disabled
+                          v-model="form.address"
+                          label=""
+                        >
+                          <template slot="label">
+                            <div style="font-size: 14px">Address</div>
+                          </template>
+                        </v-text-field>
+                      </v-col>
+                    </v-row>
+                  </v-card>
+                </v-col>
+                <v-col cols="12" lg="6">
+                  <v-card-text>
+                    <v-row>
+                      <v-col class="py-1" cols="12" lg="12">
+                        <v-menu
+                          ref="menu" disabled
+                          v-model="menu"
+                          :close-on-content-click="false"
+                          :return-value.sync="form.date"
+                          transition="scale-transition"
+                          offset-y
+                          min-width="auto"
+                        >
+                          <template v-slot:activator="{ on, attrs }">
+                            <v-text-field disabled
+                              v-model="form.dated"
+                              dense outlined
+                              :rules="formRules"
+                              hide-details=""
+                              readonly
+                              v-bind="attrs"
+                              v-on="on"
+                            >
+                              <template slot="label">
+                                <div style="font-size: 14px">
+                                  Appointment Date
+                                <abbr class="text-danger">* </abbr>
+                                </div>
+                              </template>
+                            </v-text-field>
+                          </template>
+                          <v-date-picker
+                            v-model="form.dated"
+                            no-title
+                            scrollable
+                          >
+                            <v-spacer></v-spacer>
+                            <v-btn text color="primary" @click="menu = false">
+                              Cancel
+                            </v-btn>
+                            <v-btn
+                              text
+                              color="primary"
+                              @click="$refs.menu.save(form.dated)"
+                            >
+                              OK
+                            </v-btn>
+                          </v-date-picker>
+                        </v-menu>
+                      </v-col>
+                      <v-col class="py-1" cols="12" lg="12">
+                        <v-select
+                          :rules="formRules" disabled
+                          v-model="form.pet_id" outlined dense
+                          hide-details=""
+                          :items="list_petname"
+                          @change="getAnimalDetails"
+                          item-text="name"
+                          return-object
+                        >
+                          <template slot="label">
+                            <div style="font-size: 14px">Pet Name
+                            <abbr class="text-danger">* </abbr></div>
+                          </template>
+                        </v-select>
+                      </v-col>
+                      <v-col class="py-1" cols="12" lg="12">
+                        <v-autocomplete
+                          :rules="formRules" disabled
+                          v-model="form.service_id" outlined
+                          hide-details="" dense
+                          @change="getServiceDetails"
+                          :items="list_services"
+                          item-text="name"
+                          item-value="id"
+                        >
+                          <template slot="label">
+                            <div style="font-size: 14px;">Service 
+                            <abbr class="text-danger">* </abbr></div>
+                          </template>
+                        </v-autocomplete>
+                      </v-col>
+                    </v-row>
+                    <v-row>
+                        <v-col class="py-1" cols="12" lg="12">
+                        <v-textarea
+                          hide-details="" rows="3"
+                            outlined dense disabled
+                          v-model="form.remarks"
+                          label=""
+                        >
+                          <template slot="label">
+                            <div style="font-size: 14px">Reason / Description </div>
+                          </template>
+                        </v-textarea>
+                      </v-col>
+                    </v-row>
+                    <v-row>
+                      <v-col>
+                        <v-row no-gutters>
+                          <v-col cols="3">Service Fee:</v-col>
+                          <v-col cols="8" v-if="form.amount"
+                            >Php
+                              {{
+                                form.amount
+                                  .toString()
+                                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+                              }}</v-col
+                          >
+                        </v-row>
+                      </v-col>
+                        <v-col class="py-1" cols="12" lg="12">
+                        <v-select
+                          :rules="formRules"  
+                          v-model="form.status" outlined dense
+                          hide-details=""
+                          :items="list_status" 
+                          item-text="name"
+                          item-value="id"
+                        >
+                          <template slot="label">
+                            <div style="font-size: 14px">Status
+                            <abbr class="text-danger">* </abbr></div>
+                          </template>
+                        </v-select>
+                      </v-col>
+                    </v-row>
+                  </v-card-text>
+                  <v-card-actions> 
+                    <v-spacer></v-spacer>
+                    <v-btn color="success"  @click="changeStatus"><v-icon>mdi-save</v-icon>Save</v-btn>
+                  </v-card-actions>
+                </v-col>
+              </v-row>
+               
+            </v-card>
+          </v-card-text>
+          <!-- dialog btn -->
+        </v-card>
+      </v-dialog>
+    <!---------------------------------------------------------------------- datatable  -->
+  
+      <v-data-table
+        dense
+        height="400"
+        class=" table-striped thead-dark"
+        :loading="progressBar"
+        :headers="header"
+        :items="data"
+      > 
+        <template v-slot:[`item.pet`]="{ item }">
+          <v-img
+            contain
+            width="70"
+            height="70"
+            :src="'/storage/files/vet/animal/' + item.pet.picture"
+          ></v-img>
+        </template>
+            <template v-slot:[`item.service`]="{ item }">
+        {{item.service.name }}<br>
+        <small>{{ item.service.handle_by }}</small>
+        </template>
+       <template v-slot:[`item.status.name`]="{ item }"> 
+        <v-chip color="orange" dark>{{ item.status.name }}</v-chip>
+        </template>
+        <template v-slot:[`item.pet.owner`]="{ item }">
+          <small>
+            <strong>Pet name: {{ item.pet.name }}</strong
+            ><br />
+            Owner: {{ item.pet.owner }}<br />
+            Address: {{ item.pet.address }} <br />
+            Phone #: {{ item.pet.phone }} / {{ item.pet.email }}</small
+          >
+        </template>
+
+        <template v-slot:[`item.id`]="{ item }">
+          <v-btn
+            class="px-1 btn btn-primary text-white"
+            text
+            small
+            @click="sub_editItem(item)"
+          >
+            <small><v-icon size="15"> mdi-checkbox-marked-outline </v-icon> Process Appointment </small>
+          </v-btn>
+         
+        </template>
+      </v-data-table> 
+  </div>
+</template>
+ 
+<style>
+.dropzonexz {
+  margin: 0px !important;
+  padding: 0px !important;
+  height: 50px;
+  width: 100%;
+  min-height: 0px !important;
+}
+.dropzonexx {
+  position: absolute;
+  top: 200px;
+  margin: 0px !important;
+  padding: 0px !important;
+  height: 40px;
+  width: 101%;
+  left: -2px;
+  min-height: 0px !important;
+}
+</style>
+
+
+<script>
+import axios from "axios";
+import Swal from "sweetalert2"; 
+export default { 
+  // declarations
+  data: () => ({
+    page: 1,
+    search: "",
+    menu: false,
+    list_petname: [],
+    list_services: [],
+    list_status: [],
+    editedIndex: -1,
+    formRules: [(v) => !!v || "This is required"],
+    formRulesNumber: [
+      (v) => {
+        if (!isNaN(parseFloat(v)) && v >= 0 && v <= 30) return true;
+        return "Input number only";
+      },
+    ],
+    progressBar: false,
+    data: [],
+
+    // sub category
+    sub_dialog: false,
+    header: [
+      { width: "5%", text: "Image", value: "pet", sortable: false },
+      { width: "20%", text: "Service", value: "service", sortable: false },
+      { width: "40%", text: "Owner", value: "pet.owner", sortable: false },
+      { width: "15%", text: "Status", value: "status.name", sortable: false },
+
+      {
+        width: "35%",
+        text: "Action",
+        value: "id",
+        sortable: false,
+      },
+    ],
+    form: {
+      id: "",
+      pet_id: "",
+      service_id: "",
+      amount: "",
+
+      breed: "",
+      gender: "",
+      birth_date: "",
+      owner: "",
+      email: "",
+      phone: "",
+      address: "",
+      picture: "",
+      status: "",
+      remarks: "",
+    },
+  }),
+
+  // load
+  mounted() {
+    this.getData();
+    this.getAnimals();
+    this.getServiceList(); 
+    this.getStatusList();
+  },
+
+  // functions
+  methods: {
+    // main
+    async getData() {
+      this.progressBar = true;
+      await axios
+        .get("/api/vet/appointment/list", {
+          params: {
+            search: this.search,
+          },
+        })
+        .then((result) => { 
+          this.data = result.data ; 
+          this.progressBar = false;
+        });
+    },
+
+    async getAnimals() { 
+      await axios
+        .get("/api/vet/appointment/animal/list")
+        .then((result) => {  
+          this.list_petname = result.data; 
+        });
+    },
+    getAnimalDetails(val) {   
+      this.form.breed = this.list_petname[this.list_petname.indexOf(val) ].breed;
+      this.form.gender = this.list_petname[this.list_petname.indexOf(val) ].gender;
+      this.form.birth_date = this.list_petname[this.list_petname.indexOf(val) ].birth_date;
+      this.form.owner = this.list_petname[this.list_petname.indexOf(val) ].owner;
+      this.form.email = this.list_petname[this.list_petname.indexOf(val) ].email;
+      this.form.phone = this.list_petname[this.list_petname.indexOf(val) ].phone;
+      this.form.address = this.list_petname[this.list_petname.indexOf(val) ].address;
+      this.form.picture = this.list_petname[this.list_petname.indexOf(val) ].picture; 
+    }, 
+    async getServiceList() { 
+      await axios.get("/api/vet/appointment/service/list").then((result) => {
+        this.list_services = result.data; 
+      });
+    },    
+    async getStatusList() { 
+      await axios.get("/api/vet/appointment/status/list").then((result) => {
+        this.list_status = result.data; 
+      });
+    }, 
+    getServiceDetails(val) {
+      this.form.amount = this.list_services[val].amount;
+    },
+
+    async store() {
+      if (this.$refs.subForm.validate()) {
+        await Swal.fire({
+          title:
+            "Do you want to " +
+            (this.editedIndex == -1 ? "save" : "update") +
+            " appointment?",
+          icon: "question",
+          showCancelButton: true,
+          confirmButtonColor: "#00794b",
+          cancelButtonColor: "#CC0022",
+          confirmButtonText: "Yes",
+          cancelButtonText: "No",
+          showLoaderOnConfirm: true,
+          preConfirm: async () => {
+            const { data } = await axios.post(
+              "/api/vet/appointment/save",
+              this.form
+            );
+            return data;
+          },
+          allowOutsideClick: () => !Swal.isLoading(),
+        }).then((result) => { 
+          console.log(result.value)
+          if (result.value) {
+            this.getData();
+            this.sub_close();
+            Swal.fire({
+              icon: "success",
+              title:
+                "The subject has been successfully " +
+                (this.editedIndex > -1 ? "updated" : "saved"),
+              html: "",
+            });
+            this.sub_dialog = false;
+          }
+        });
+      }
+    },
+    sub_editItem(item) {  
+      this.sub_dialog = true;
+      this.editedIndex = this.data.indexOf(item);  
+      this.form = {
+        id: item.id,
+        pet_id: item.pet ,
+        service_id: item.service.id,
+        amount:  item.amount,
+        dated:  item.dated,
+
+        breed: item.pet.breed,
+        gender: item.pet.gender,
+        birth_date: item.pet.birth_date,
+        owner: item.pet.owner,
+        email: item.pet.email,
+        phone: item.pet.phone,
+        address: item.pet.address,
+        picture: item.pet.picture,
+        status: item.status.id,
+        remarks: item.remarks,
+      };   
+       
+    },
+
+    
+    async changeStatus() {  
+      await Swal.fire({
+        title: "Do you want to process appointment?",
+        icon: "question",
+        showCancelButton: true,
+        confirmButtonColor: "#00794b",
+        cancelButtonColor: "#CC0022",
+        confirmButtonText: "Yes",
+        cancelButtonText: "No",
+        showLoaderOnConfirm: true,
+        preConfirm: async () => { 
+          const { data } = await axios.post("/api/vet/appointment/process",  this.form);
+          return data;
+        },
+        allowOutsideClick: () => !Swal.isLoading(),
+      }).then((result) => {
+        if (result.value) {
+          Swal.fire({
+            icon: "success",
+            title: "The appointment has been successfully processed." ,
+            html: "",
+          });
+        }
+        this.getData();
+      });
+    },
+    sub_close() {
+      this.form = {
+      id: "",
+      pet_id: "",
+      service_id: "",
+
+      breed: "",
+      gender: "",
+      birth_date: "",
+      owner: "",
+      email: "",
+      phone: "",
+      address: "",
+      picture: "",
+      status: "",
+      }; 
+    },
+
+    // roles
+    addRole() {
+      this.dialogSettings = true;
+      // Remove my-component from the DOM
+      this.refreshSettings = false;
+      this.$nextTick(() => {
+        // Add the component back in
+        this.refreshSettings = true;
+      });
+    },
+  },
+  //new of update title
+  computed: {
+    formTitle() {
+      return this.editedIndex === -1 ? "Add new " : "Update ";
+    },
+  },
+  // on changes
+  watch: {
+    page(val) {
+      this.page = val;
+      this.getData();
+    },
+    data() {
+      this.progressBar = false;
+    },
+    sub_dialog(val) {
+      val || this.sub_close();
+    },
+  },
+};
+</script>
