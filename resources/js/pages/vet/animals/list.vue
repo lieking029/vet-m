@@ -484,7 +484,7 @@
           >
         </v-card-actions>
       </template>
-    <template v-slot:[`item.type.name`]="{ item }">
+    <template v-slot:[`item.type`]="{ item }">
       <b>{{ item.name }}</b><br>
       {{ item.type.name }}<br>
       <small>{{ item.count }}</small>
@@ -597,7 +597,7 @@ export default {
     // sub category
     sub_dialog: false,
     header: [ 
-      { width: "20%", text: "Name", value: "type.name", sortable: false },
+      { width: "20%", text: "Name", value: "type", sortable: false },
       { width: "10%", text: "Farm", value: "farm_name", sortable: false },
       { width: "45%", text: "Owner", value: "owner", sortable: false },
 
@@ -818,9 +818,10 @@ export default {
         if (key == "active") {
           this.form[key] = parseInt(item[key]);
         }
-         if (key == "type") {
-          this.form[key] = parseInt(item[key]['id']);
-        }
+        // if (key == "type") {
+        
+        //   this.form[key] =  item[key]['id'] ;
+        // }
         if (key == "veterinarians") {
           for (var key1 in item[key]) {
             this.form[key][key1] = item[key][key1];

@@ -142,10 +142,10 @@ class AnimalController extends Controller
       
         $table =  MgtAnimals::query();
         if ($request->id) {
-            return $table->where("id", $request->id)->update($request->except(['attachment', 'veterinarians','remarks']) + [  'attachment' => json_encode($request->attachment),     'veterinarians' => json_encode($request->veterinarians), 'remarks' => json_encode($request->remarks), 'user_id' => auth()->user()->id]);
+            return $table->where("id", $request->id)->update($request->except(['type','attachment', 'veterinarians','remarks']) + [ 'type'=>$request->type['id'], 'attachment' => json_encode($request->attachment),     'veterinarians' => json_encode($request->veterinarians), 'remarks' => json_encode($request->remarks), 'user_id' => auth()->user()->id]);
         } else {
             $clone = clone $table;
-            $clone->create($request->except(['attachment', 'veterinarians','remarks','active']) + [  'attachment' => json_encode($request->attachment),   'allergies' => json_encode($request->allergies),   'veterinarians' => json_encode($request->veterinarians),  'remarks' => json_encode($request->remarks) , 'user_id' => auth()->user()->id]);
+            $clone->create($request->except([ 'attachment', 'veterinarians','remarks','active']) + [   'attachment' => json_encode($request->attachment),   'allergies' => json_encode($request->allergies),   'veterinarians' => json_encode($request->veterinarians),  'remarks' => json_encode($request->remarks) , 'user_id' => auth()->user()->id]);
             $clone = clone $table;
             return $clone->orderBy("id", "desc")->first();
         }

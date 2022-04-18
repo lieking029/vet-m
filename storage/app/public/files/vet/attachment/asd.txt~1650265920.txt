@@ -1,0 +1,64 @@
+A WEB BASED ONLINE APPOINTMENT FOR PROVINCIAL VETERINARY CLINIC
+
+*pasa ako quiz sa thesis
+=============================
+*pa vet sila nowi
+
+
+
+
+
+==============================
+1.UGRD-IT6314 Web Application Development 1 
+	Quiz		Exam
+Prelim- ok		ok	
+Midterm-ok		ok
+Finals- 
+
+2.UGRD-IT6317 Web Enhanced Animation Graphics
+	Quiz		Exam
+Prelim- ok		ok		
+Midterm-ok		ok
+Finals- 
+3.UGRD-CS6306 Unified Functional Testing
+	Quiz		Exam
+Prelim- ok		ok		
+Midterm-ok		ok
+Finals- 
+4.UGRD-IT6209 Introduction to Multimedia
+	Quiz		Exam
+Prelim- ok		ok	
+Midterm-ok		ok
+Finals- 
+5.UGRD-IT6398 IT Capstone Project 1
+	Quiz		Exam
+Prelim- ok		ok		
+Midterm-ok		ok
+Finals-
+6.UGRD-IT6315 Web Application Development 2
+	Quiz		Exam
+Prelim- ok		ok		
+Midterm-ok		ok
+Finals-
+7.UGRD-IT6316 XML-Based Web Applications
+	Quiz		Exam
+Prelim- ok		ok	
+Midterm-ok		ok
+Finals-
+8.UGRD-ITE6300 Cloud Computing and Internet of Things
+	Quiz		Exam
+Prelim- ok		ok
+Midterm-ok		ok
+Finals-
+9.IT-6300 Data Communications and Networking 4
+	Quiz		Exam
+Prelim- ok		ok	
+Midterm-ok		ok
+Finals-
+
+
+
+
+
+
+
