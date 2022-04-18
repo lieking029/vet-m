@@ -3,10 +3,12 @@
     <v-card-text class="p-1">
       <v-row>
         <v-col class="text-white">
+        
           <h2>Hi, {{ user.first_name }}</h2>
         </v-col>
       </v-row>
       <hr class="m-2 white" />
+ 
       <v-row>
         <v-col cols="6"  >
           <v-row no-gutters>
@@ -47,7 +49,7 @@
             <hr>
             <div v-if="appointments_data.length == 0" class="text-center">No Appointments found</div>
             
-            
+       
             
             
     <v-row v-else align="center">
@@ -78,23 +80,25 @@
       v-model="window"
         class=" text-white"
         vertical
-      >
+      >  {{ appointments_data }}
         <v-window-item 
           v-for="(v,k) in appointments_data"
           :key="k"
         >
+      
           <v-card class="p-2 " flat>
             <v-card-text>
               <v-row
                 class="mb-4"
                 align="center"
-              > 
+              >   
                 <v-avatar
                   color="grey"
                   class="mr-4" size="60"
                 >
+              
             
-                <v-img :src="'/storage/files/vet/animal/'+v.pet.picture"></v-img>
+                <v-img v-if="v.pet.picture" :src="'/storage/files/vet/animal/'+v.pet.picture"></v-img>
                 </v-avatar>
                 <strong > <div class="text-h6">{{ v.pet.name  }}</div> 
                   <small>{{ v.dated }}</small></strong> 
@@ -191,6 +195,7 @@ export default {
 
     async getAppointments() {
       await axios.get("/api/vet/dashboard/appointments").then((result) => {
+        console.log(result.data)
         this.appointments_data = result.data
       });
     },
