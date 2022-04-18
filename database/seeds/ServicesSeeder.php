@@ -1,0 +1,73 @@
+<?php
+
+use App\Models\Vet\MgtServices;
+use Illuminate\Database\Seeder;
+
+class ServicesSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        // factory(MgtServices::class, 10)->create()->each(function($post){
+        //     $post->save();
+        //     });
+
+        MgtServices::insert([   
+            ['id' => 1, 'name' => 'A. Surgery - minor', 'description' => 'per Head', 'amount' => '500', 'handled_by' => '', 'picture' => 'pexels-cottonbro-7585022.jpg~1649730233.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:10:16', 'updated_at' => '2022-04-12 02:23:59'],
+            ['id' => 2, 'name' => 'B. Surgery - minor', 'description' => 'per Head', 'amount' => '1000', 'handled_by' => '', 'picture' => 'pexels-cottonbro-7585022.jpg~1649730253.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:10:16', 'updated_at' => '2022-04-12 02:24:16'],
+            ['id' => 3, 'name' => 'A. Surgery - major', 'description' => 'per Head', 'amount' => '1000', 'handled_by' => '', 'picture' => 'pexels-cottonbro-7585022.jpg~1649730260.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:10:16', 'updated_at' => '2022-04-12 02:24:24'],
+            ['id' => 4, 'name' => 'B. Surgery - major', 'description' => 'per Head', 'amount' => '2000', 'handled_by' => '', 'picture' => 'pexels-cottonbro-7585022.jpg~1649730269.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:10:16', 'updated_at' => '2022-04-12 02:24:32'],
+            ['id' => 5, 'name' => 'C. Surgery - major', 'description' => 'per Head', 'amount' => '3000', 'handled_by' => '', 'picture' => 'pexels-cottonbro-7585022.jpg~1649730276.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:10:16', 'updated_at' => '2022-04-12 02:24:39'],
+            ['id' => 6, 'name' => 'Fecalysis', 'description' => 'per Test', 'amount' => '20', 'handled_by' => '', 'picture' => 'laboratory_3.png~1649730347.png', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:10:16', 'updated_at' => '2022-04-12 02:25:49'],
+            ['id' => 7, 'name' => 'Urinalysis', 'description' => 'per Test', 'amount' => '20', 'handled_by' => '', 'picture' => 'pexels-mikhail-nilov-8670147.jpg~1649730430.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:10:16', 'updated_at' => '2022-04-12 02:27:12'],
+            ['id' => 8, 'name' => 'Complete Blood Count', 'description' => 'per Test', 'amount' => '100', 'handled_by' => '', 'picture' => 'pexels-ivan-samkov-9629706.jpg~1649730464.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:10:16', 'updated_at' => '2022-04-12 02:27:46'],
+            ['id' => 9, 'name' => 'RBC Count', 'description' => 'per Test', 'amount' => '20', 'handled_by' => '', 'picture' => 'pexels-karolina-grabowska-4230620.jpg~1649730512.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:10:16', 'updated_at' => '2022-04-12 02:28:35'],
+            ['id' => 10, 'name' => 'TWBC Count', 'description' => 'per Test', 'amount' => '20', 'handled_by' => '', 'picture' => 'pexels-karolina-grabowska-4230620.jpg~1649730520.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:10:16', 'updated_at' => '2022-04-12 02:28:43'],
+            ['id' => 11, 'name' => 'DWBC Count', 'description' => 'per Test', 'amount' => '20', 'handled_by' => '', 'picture' => 'pexels-karolina-grabowska-4230620.jpg~1649730529.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:16:55', 'updated_at' => '2022-04-12 02:28:50'],
+            ['id' => 13, 'name' => 'Packed Cell Volume', 'description' => 'per Test', 'amount' => '20', 'handled_by' => '', 'picture' => 'pexels-karolina-grabowska-4230620.jpg~1649730537.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:17:31', 'updated_at' => '2022-04-12 02:29:00'],
+            ['id' => 14, 'name' => 'Blood Chemistry Test', 'description' => 'per Test', 'amount' => '100', 'handled_by' => '', 'picture' => 'pexels-karolina-grabowska-4230620.jpg~1649733283.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:17:49', 'updated_at' => '2022-04-12 03:14:46'],
+            ['id' => 15, 'name' => 'Ultrasound', 'description' => 'per Test', 'amount' => '100', 'handled_by' => '', 'picture' => 'pexels-tima-miroshnichenko-6235649.jpg~1649733332.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:18:04', 'updated_at' => '2022-04-12 03:15:36'],
+            ['id' => 16, 'name' => 'Vitamin Injection', 'description' => 'per Test', 'amount' => '20', 'handled_by' => '', 'picture' => 'pexels-pranidchakan-boonrom-1350591.jpg~1649733371.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:18:19', 'updated_at' => '2022-04-12 03:16:13'],
+            ['id' => 17, 'name' => 'Antibiotic Injection', 'description' => 'per Head', 'amount' => '50', 'handled_by' => '', 'picture' => 'pexels-pranidchakan-boonrom-1350591.jpg~1649733377.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:18:38', 'updated_at' => '2022-04-12 03:16:19'],
+            ['id' => 18, 'name' => 'Mange Injection', 'description' => 'per Head', 'amount' => '20', 'handled_by' => '', 'picture' => 'pexels-pranidchakan-boonrom-1350591.jpg~1649733383.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:19:09', 'updated_at' => '2022-04-12 03:16:26'],
+            ['id' => 19, 'name' => 'Skin Scraping', 'description' => 'per Test', 'amount' => '20', 'handled_by' => '', 'picture' => 'pexels-mikhail-nilov-7470633.jpg~1649733460.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:19:23', 'updated_at' => '2022-04-12 03:17:43'],
+            ['id' => 20, 'name' => 'Ear Swab', 'description' => 'per Test', 'amount' => '20', 'handled_by' => '', 'picture' => 'pexels-mikhail-nilov-7470635.jpg~1649733477.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:19:41', 'updated_at' => '2022-04-12 03:17:59'],
+            ['id' => 21, 'name' => 'Microfilaria Test', 'description' => 'per Test', 'amount' => '20', 'handled_by' => '', 'picture' => 'pexels-chokniti-khongchum-2280547.jpg~1649733545.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:19:54', 'updated_at' => '2022-04-12 03:19:07'],
+            ['id' => 22, 'name' => 'Viginal Smear', 'description' => 'per Test', 'amount' => '20', 'handled_by' => '', 'picture' => 'pexels-mumine-durmaz-10011923.jpg~1649733641.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:20:06', 'updated_at' => '2022-04-12 03:20:43'],
+            ['id' => 23, 'name' => 'Blood Parasite Exam', 'description' => 'per Test', 'amount' => '50', 'handled_by' => '', 'picture' => 'pexels-chokniti-khongchum-2280547.jpg~1649733652.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:20:24', 'updated_at' => '2022-04-12 03:20:54'],
+            ['id' => 24, 'name' => 'IV Fluid Therapy / Induction', 'description' => 'per Test', 'amount' => '300', 'handled_by' => '', 'picture' => 'pexels-cottonbro-7583386.jpg~1649733699.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:20:44', 'updated_at' => '2022-04-12 03:21:43'],
+            ['id' => 25, 'name' => 'PCR Test', 'description' => '(min. 10 samples)', 'amount' => '2000', 'handled_by' => '', 'picture' => 'pexels-chokniti-khongchum-2280571.jpg~1649733726.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:21:21', 'updated_at' => '2022-04-12 03:22:08'],
+            ['id' => 26, 'name' => 'ELISA Test', 'description' => '(min. 8 samples)', 'amount' => '300', 'handled_by' => '', 'picture' => 'pexels-chokniti-khongchum-2280571.jpg~1649733745.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:21:43', 'updated_at' => '2022-04-12 03:22:27'],
+            ['id' => 27, 'name' => 'Lamp Test', 'description' => '(min. 8 samples)', 'amount' => '300', 'handled_by' => '', 'picture' => 'pexels-chokniti-khongchum-2280571.jpg~1649733750.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:22:05', 'updated_at' => '2022-04-12 03:22:32'],
+            ['id' => 28, 'name' => 'HA HI Test', 'description' => '(min. 10 samples)', 'amount' => '150', 'handled_by' => '', 'picture' => 'pexels-chokniti-khongchum-2280571.jpg~1649733756.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:22:23', 'updated_at' => '2022-04-12 03:22:38'],
+            ['id' => 29, 'name' => 'Blood Smear', 'description' => 'per Head', 'amount' => '5', 'handled_by' => '', 'picture' => 'pexels-karolina-grabowska-4230620 (1).jpg~1649733800.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:22:38', 'updated_at' => '2022-04-12 03:23:24'],
+            ['id' => 30, 'name' => 'TB Test', 'description' => 'per Head', 'amount' => '150', 'handled_by' => '', 'picture' => 'pexels-artem-podrez-5726794.jpg~1649733837.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:22:50', 'updated_at' => '2022-04-12 03:23:59'],
+            ['id' => 31, 'name' => 'Vaccination Fee for dog / cat', 'description' => 'per Head', 'amount' => '100', 'handled_by' => '', 'picture' => 'pexels-mikhail-nilov-7470753.jpg~1649733873.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:23:09', 'updated_at' => '2022-04-12 03:24:35'],
+            ['id' => 32, 'name' => 'Deworming dog / cat < 5kg', 'description' => 'per Head', 'amount' => '50', 'handled_by' => '', 'picture' => 'pexels-karolina-grabowska-4047148.jpg~1649733922.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:23:27', 'updated_at' => '2022-04-12 03:25:24'],
+            ['id' => 33, 'name' => 'Deworming 5-10kg', 'description' => 'per Head', 'amount' => '100', 'handled_by' => '', 'picture' => 'pexels-karolina-grabowska-4047148.jpg~1649733928.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:23:43', 'updated_at' => '2022-04-12 03:25:30'],
+            ['id' => 34, 'name' => 'Deworming 10-15kg', 'description' => 'per Head', 'amount' => '150', 'handled_by' => '', 'picture' => 'pexels-karolina-grabowska-4047148.jpg~1649733933.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:24:04', 'updated_at' => '2022-04-12 03:25:35'],
+            ['id' => 35, 'name' => 'Deworming 15kg above', 'description' => 'per Head', 'amount' => '200', 'handled_by' => '', 'picture' => 'pexels-karolina-grabowska-4047148.jpg~1649733939.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:24:24', 'updated_at' => '2022-04-12 03:25:41'],
+            ['id' => 36, 'name' => 'Blood Collection - All except Horse / Chicken', 'description' => 'per Head', 'amount' => '20', 'handled_by' => '', 'picture' => 'pexels-karolina-grabowska-4230620 (1).jpg~1649733985.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:24:54', 'updated_at' => '2022-04-12 03:26:29'],
+            ['id' => 37, 'name' => 'Blood Collection - Horse', 'description' => 'per Head', 'amount' => '200', 'handled_by' => '', 'picture' => 'pexels-karolina-grabowska-4230620 (1).jpg~1649733996.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:25:10', 'updated_at' => '2022-04-12 03:26:39'],
+            ['id' => 38, 'name' => 'Blood Collection - Chicken', 'description' => 'per Head', 'amount' => '5', 'handled_by' => '', 'picture' => 'pexels-karolina-grabowska-4230620 (1).jpg~1649734013.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:25:25', 'updated_at' => '2022-04-12 03:26:55'],
+            ['id' => 39, 'name' => 'A. Inspection Fees', 'description' => 'Chicken / Duck / Pigeon
+                                    per Head', 'amount' => '.10', 'handled_by' => '', 'picture' => 'pexels-olya-kobruseva-5228855.jpg~1649734406.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:26:43', 'updated_at' => '2022-04-12 03:33:30'],
+            ['id' => 40, 'name' => 'B. Inspection Fees', 'description' => 'Hog 
+                                    per Head', 'amount' => '5', 'handled_by' => '', 'picture' => 'pexels-pixabay-63285.jpg~1649734378.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:27:04', 'updated_at' => '2022-04-12 03:32:59'],
+            ['id' => 41, 'name' => 'C. Inspection Fees', 'description' => 'Cattle/Carabao/horse
+                                    per Head', 'amount' => '20', 'handled_by' => '', 'picture' => 'pexels-dio-alif-utomo-2983750.jpg~1649734356.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:27:33', 'updated_at' => '2022-04-12 03:32:38'],
+            ['id' => 42, 'name' => 'D. Inspection Fees', 'description' => 'Goat 
+                                    per Head', 'amount' => '5', 'handled_by' => '', 'picture' => 'pexels-luna-lovegood-1122617.jpg~1649734303.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:27:57', 'updated_at' => '2022-04-12 03:31:45'],
+            ['id' => 43, 'name' => 'E. Inspection Fees (4months below)', 'description' => 'Fighting cock (hen and roosters)', 'amount' => '20', 'handled_by' => '', 'picture' => 'pexels-david-sing-7134976.jpg~1649734275.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:29:09', 'updated_at' => '2022-04-12 03:31:18'],
+            ['id' => 44, 'name' => 'E. Inspection Fees (4months above)', 'description' => 'Fighting cock (hens and roosters)', 'amount' => '50', 'handled_by' => '', 'picture' => 'pexels-alexandr-podvalny-375510.jpg~1649734226.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:29:35', 'updated_at' => '2022-04-12 03:30:29'],
+            ['id' => 45, 'name' => 'Eggs', 'description' => 'per Tray', 'amount' => '.10', 'handled_by' => '', 'picture' => 'pexels-cottonbro-4911785.jpg~1649734154.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:29:51', 'updated_at' => '2022-04-12 03:29:15'],
+            ['id' => 46, 'name' => 'Chicken Manure / Dung', 'description' => 'per Bag', 'amount' => '.10', 'handled_by' => '', 'picture' => 'pexels-olya-kobruseva-5228855.jpg~1649734213.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:30:10', 'updated_at' => '2022-04-12 03:30:16'],
+            ['id' => 47, 'name' => 'Farm', 'description' => 'per Farm', 'amount' => '200', 'handled_by' => '', 'picture' => 'pexels-arthouse-studio-4530462.jpg~1649734249.jpg', 'user_id' => '1', 'active' => '1', 'created_at' => '2022-04-11 10:30:23', 'updated_at' => '2022-04-12 03:30:51'],
+                      
+        ]);  
+    }
+}
