@@ -116,7 +116,7 @@ class AppointmentController extends Controller
 
     public function  statusList()
     {
-        return TblGenerals::where(["active"=>1, "main" => 0])->get();
+        return TblGenerals::where(["active"=>1, "main" => 0,'description'=>'Status'])->get();
     }
 
 
