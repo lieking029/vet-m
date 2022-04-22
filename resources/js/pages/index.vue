@@ -3,34 +3,39 @@
     <guestnav />
 
     <v-col style="top: 50px" cols="12">
-      <v-img :aspect-ratio=" 5/ 1" style="padding-top: 30px" class="p-4" src="/img/register/a10.jpg">
+      <v-img
+        :aspect-ratio="5 / 1"
+        style="padding-top: 30px"
+        class="p-4"
+        src="/img/register/a10.jpg"
+      >
         <v-card-text class="text-white">
           <v-row>
-            <v-col cols="12" sm="4">
-              <v-card-text style="height: 620px"> 
-               <br><br><br>
-              <v-card-actions> 
-                <v-btn color="info"  @click="$router.push({ name: 'login' }).catch((err) => {})" large>Book Appointment now </v-btn> 
-                <v-spacer></v-spacer>
-              </v-card-actions>
+            <v-col cols="12" sm="6">
+              <v-card-text style="height: 620px">
+                <br /><br /><br />
                 <hr />
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est
-                aspernatur saepe distinctio, asperiores velit officiis atque
-                soluta vero rem eaque quasi nisi. Sunt, illo sequi. Quas hic
-                animi natus deserunt? Lorem ipsum dolor sit amet consectetur
-                adipisicing elit. Fugiat excepturi praesentium eveniet pariatur,
-                rem impedit tempore molestiae possimus nam reprehenderit sequi
-                eos magni ratione consequatur dolorum veritatis eligendi, esse
-                temporibus. Lorem, ipsum dolor sit amet consectetur adipisicing
-                elit. Consectetur, optio omnis dignissimos dicta commodi quam
-                pariatur unde debitis, eum dolore aperiam facilis expedita saepe
-                alias molestias veritatis? Officiis, voluptatibus sed.
+                <h3>
+                  Welcome! <br />
+                  Book your appointment online. Get consultation today!
+                </h3>
+
+                <v-card-actions>
+                  <v-btn
+                    color="info"
+                    @click="$router.push({ name: 'login' }).catch((err) => {})"
+                    large
+                    >Book Appointment now
+                  </v-btn>
+                  <v-spacer></v-spacer>
+                </v-card-actions>
               </v-card-text>
-            </v-col> 
+            </v-col>
           </v-row>
         </v-card-text>
 
-        <br> <br>
+        <br />
+        <br />
       </v-img>
     </v-col>
     <v-col cols="12">
@@ -86,14 +91,56 @@
             <v-row no-gutters>
               <v-col cols="12" sm="6">
                 <v-card class="p-4">
-                  <h3 class="text-center" style="font-size: 30px">Mission</h3>
-                  <h6 style="font-size: 20px">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Qui, voluptates ducimus esse accusantium cupiditate alias
-                    nam dolorum sed blanditiis iste amet odio dignissimos odit
-                    recusandae et exercitationem aliquid, cumque distinctio.
-                  </h6>
-                  <v-img height="500" src="/img/register/a4.png"></v-img>
+                  <v-carousel 
+    hide-delimiter-background
+    show-arrows-on-hover height="250">
+                    <v-carousel-item>
+                      <v-sheet color="white">
+                        <v-row align="center" justify="center">
+                          <v-col class="text-dark">
+                            <h3 class="text-center" style="font-size: 30px">
+                              Mission
+                            </h3>
+                            <h6 style="font-size: 20px; text-indent: 40px;">
+                              Batangas Province is committed to establish and
+                              achieve dynamic, effective and transparent
+                              governance, intensify social services, upgrade the
+                              quality of education, construct state of the art
+                              infrastructure, promote agro-tourism industry,
+                              advocate a conducive environment for investments
+                              through synergistic approach with the highest
+                              degree of integrity
+                            </h6> 
+                          </v-col>
+                        </v-row>
+                      </v-sheet>
+                    </v-carousel-item>
+
+                    <v-carousel-item>
+                      <v-sheet color="white">
+                        <v-row align="center" justify="center">
+                          <v-col class="text-dark">
+                            <h3 class="text-center" style="font-size: 30px">
+                              Vission
+                            </h3>
+                            <h6 style="font-size: 20px; text-indent: 40px;">
+                              Batangas Province: a world-class destination
+                              with ecologically balanced and sustainable
+                              development and state-of-the-art infrastructure
+                              and home of God-loving and family centered people
+                              governed by dedicated and professional
+                              political leadership committed to one vision and 
+                              shared responsibilities geared toward better quality
+                              lif for Batangueños
+                            </h6> 
+                          </v-col>
+                        </v-row>
+                      </v-sheet>
+                    </v-carousel-item>
+                  </v-carousel> <v-img
+                              height="400"
+                              src="/img/register/a4.png"
+                            ></v-img>
                 </v-card>
               </v-col>
             </v-row>
@@ -147,14 +194,13 @@
             </v-card-text>
           </v-col>
           <v-col class="text-center mt-12" cols="12" sm="4">
-                <v-col>
-            <v-contaner>
-          <v-img contain width="400" src="/img/register/a11.png"></v-img>
-</v-contaner>
-          </v-col>
+            <v-col>
+              <v-container>
+                <v-img contain width="400" src="/img/register/a11.png"></v-img>
+              </v-container>
+            </v-col>
           </v-col>
         </v-row>
-      
       </v-card-text>
     </v-col>
   </v-row>
