@@ -609,6 +609,7 @@ export default {
         this.form.phone = this.list_petname[this.list_petname.indexOf(val) ].phone;
         this.form.address = this.list_petname[this.list_petname.indexOf(val) ].address;
         this.form.picture = this.list_petname[this.list_petname.indexOf(val) ].picture;
+        this.form.status = this.list_petname[this.list_petname.indexOf(val) ].status;
       }
       else{ 
           this.form.type = this.list_petname[this.list_petname.indexOf(val) ].type.name;
@@ -621,6 +622,7 @@ export default {
         this.form.phone = this.list_petname[this.list_petname.indexOf(val) ].phone;
         this.form.address = this.list_petname[this.list_petname.indexOf(val) ].address; 
         this.form.picture = this.list_petname[this.list_petname.indexOf(val) ].picture;
+        this.form.status = this.list_petname[this.list_petname.indexOf(val) ].status;
       } 
       
     }, 
@@ -696,6 +698,7 @@ export default {
         address: item.details.address,
         picture: item.details.picture,
         remarks: item.remarks,
+        status: item.status,
       }; 
       }else{
           this.form = {
@@ -718,6 +721,7 @@ export default {
         email: item.details.email,
         phone: item.details.phone,
         address: item.details.address,  
+        status: item.status,
       };  
       this.form.descriptions = item.service.description;
       }

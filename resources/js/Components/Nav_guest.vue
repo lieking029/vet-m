@@ -8,25 +8,33 @@
       :clipped-left="true"
     >
       <v-container>
-        <v-card-text >
+        <v-card-text  >
           <v-toolbar-title 
         @click="$router.push({ name: 'main' }).catch((err) => {})">
           <v-row no-gutters>
-            <v-col cols="1">
+            <v-col cols="2">
+              <v-card-actions>
               <v-img 
                 contain
-                width="60"
+                width="5"
                 height="60"
                 src="/img/dashboard/logo.png"
               >
               </v-img
-            ></v-col>
+            > <v-img 
+                contain
+                width="5"
+                height="50"
+                src="/img/dashboard/logo1.png"
+              >
+              </v-img
+            ></v-card-actions></v-col>
             <v-col cols="10">
               <v-row no-gutters>
-                <v-col cols="12">
-                  <h4 class="text-white  ">
+                <v-col class="mt-1 pt-1" cols="12">
+                  <h5 class="text-white  ">
                     <b>{{ appName }}</b>
-                  </h4></v-col
+                  </h5></v-col
                 >
                 <v-col cols="12">
                   <small class="text-white caption">
