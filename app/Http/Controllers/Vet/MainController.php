@@ -42,7 +42,7 @@ class MainController extends Controller
         $temp['pets'] = MgtPets::where(['user_id'=>Auth()->user()->id,"active"=>'1'])->count();
         $temp['animals'] = MgtAnimals::where(['user_id'=>Auth()->user()->id,"active"=>'1'])->count();
         $temp['appointments'] = MgtAppointments::where(['user_id'=>Auth()->user()->id,"active"=>'1'])->count();
-        $temp['orders'] = MgtSales::where(['user_id'=>Auth()->user()->id,"active"=>'1'])->count();
+        // $temp['orders'] = MgtSales::where(['user_id'=>Auth()->user()->id,"active"=>'1'])->count();
         return $temp;
     }
 
