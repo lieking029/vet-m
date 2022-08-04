@@ -8,7 +8,8 @@
         "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --disable-host-check --config=node_modules/laravel-mix/setup/webpack.config.js",
         "prod": "npm run production",
         "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "lint": "eslint --fix --ext .js,.vue resources/js"
+        "lint": "eslint --fix --ext .js,.vue resources/js",
+        "postinstall": "npm run production"
     },
     "devDependencies": {
         "@netlify/plugin-nextjs": "^4.0.0-beta.6",
@@ -44,5 +45,12 @@
         "vuex": "^3.6.2",
         "vuex-router-sync": "^5.0.0",
         "webpack-bundle-analyzer": "^3.9.0"
+    },
+    
+    "name": "myapp",
+    "description": "a really cool app",
+    "version": "1.0.0",
+    "engines": {
+        "node": "14.x"
     }
 }
