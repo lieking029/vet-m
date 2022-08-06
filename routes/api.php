@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
  
 //login 
 Route::group(['middleware' => 'guest'], function () { 
-    Route::post('login', 'Guest\LoginController@attemptLogin');
+    Route::post('login', 'Guest\LoginController@login');
     Route::post('register', 'Guest\RegisterController@register');
     Route::post('password/send', 'Guest\RegisterController@sendLink'); 
     Route::get('password/param', 'Guest\RegisterController@getData'); 
