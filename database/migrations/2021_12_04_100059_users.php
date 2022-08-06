@@ -16,18 +16,18 @@ class Users extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();//this is our reference for other table for relationship 
             $table->integer('type')->default(1);   
-            $table->text('nick_name')->nullable();     
-            $table->text('first_name')->nullable();     
-            $table->text('last_name')->nullable();    
-            $table->text('middle_name')->nullable();    
-            $table->text('contact_no')->nullable();     
-            $table->text('address')->nullable();    
+            $table->string('nick_name')->nullable();     
+            $table->string('first_name')->nullable();     
+            $table->string('last_name')->nullable();    
+            $table->string('middle_name')->nullable();    
+            $table->string('contact_no')->nullable();     
+            $table->string('address')->nullable();    
 
-            $table->text('birth_date')->nullable();    
-            $table->text('picture')->nullable();     
+            $table->string('birth_date')->nullable();    
+            $table->string('picture')->nullable();     
 
-            $table->text('email')->unique();   
-            $table->text('password')->nullable();  
+            $table->string('email')->unique();   
+            $table->string('password')->nullable();  
             $table->integer('active')->default(1);  
             $table->rememberToken();
             $table->timestamps();

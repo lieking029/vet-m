@@ -15,32 +15,32 @@ class CreateMgtPetsTable extends Migration
     {
         Schema::create('mgt_pets', function (Blueprint $table) {
             $table->id();
-            $table->text('name')->nullable();  
-            $table->text('birth_date')->nullable();  
-            $table->text('breed')->nullable();    
-            $table->text('gender')->nullable();   
-            $table->text('color')->nullable();    
-            $table->text('picture')->nullable();  
-            $table->text('microchip')->nullable();
-            $table->text('weight')->nullable(); 
+            $table->string('name')->nullable();  
+            $table->string('birth_date')->nullable();  
+            $table->string('breed')->nullable();    
+            $table->string('gender')->nullable();   
+            $table->string('color')->nullable();    
+            $table->string('picture')->nullable();  
+            $table->string('microchip')->nullable();
+            $table->string('weight')->nullable(); 
 
-            $table->text('mother')->nullable();  
-            $table->text('mother_breed')->nullable();  
-            $table->text('father')->nullable();  
-            $table->text('father_breed')->nullable();  
-
-            
-            $table->text('owner')->nullable();  
-            $table->text('phone')->nullable();  
-            $table->text('email')->nullable();  
-            $table->text('address')->nullable();  
+            $table->string('mother')->nullable();  
+            $table->string('mother_breed')->nullable();  
+            $table->string('father')->nullable();  
+            $table->string('father_breed')->nullable();  
 
             
-            $table->text('allergies')->nullable();  
-            $table->text('veterinarians')->nullable();  
-            $table->text('attachment')->nullable();  
-            $table->text('remarks')->nullable();  
-            $table->text('user_id')->reference("users")->on('id');  
+            $table->string('owner')->nullable();  
+            $table->string('phone')->nullable();  
+            $table->string('email')->nullable();  
+            $table->string('address')->nullable();  
+
+            
+            $table->string('allergies')->nullable();  
+            $table->string('veterinarians')->nullable();  
+            $table->string('attachment')->nullable();  
+            $table->string('remarks')->nullable();  
+            $table->string('user_id')->reference("users")->on('id');  
             $table->integer('active')->default(1);   
             $table->timestamps();
         });

@@ -15,12 +15,12 @@ class CreateMgtServicesTable extends Migration
     {
         Schema::create('mgt_services', function (Blueprint $table) {
             $table->id();
-            $table->text('name')->nullable();  
-            $table->text('description')->nullable();  
-            $table->text('amount')->nullable();  
-            $table->text('handled_by')->nullable();   
-            $table->text('picture')->nullable();   
-            $table->text('user_id')->reference("users")->on('id');  
+            $table->string('name')->nullable();  
+            $table->string('description')->nullable();  
+            $table->string('amount')->nullable();  
+            $table->string('handled_by')->nullable();   
+            $table->string('picture')->nullable();   
+            $table->string('user_id')->reference("users")->on('id');  
             $table->integer('active')->default(1);   
             $table->timestamps();
         });

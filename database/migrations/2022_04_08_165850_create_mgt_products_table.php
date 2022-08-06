@@ -15,13 +15,13 @@ class CreateMgtProductsTable extends Migration
     {
         Schema::create('mgt_products', function (Blueprint $table) {
             $table->id();
-            $table->text('name')->nullable();  
-            $table->text('description')->nullable();  
-            $table->text('category')->nullable();  
-            $table->text('amount')->nullable();  
-            $table->text('remarks')->nullable();   
-            $table->text('picture')->nullable();   
-            $table->text('user_id')->reference("users")->on('id');  
+            $table->string('name')->nullable();  
+            $table->string('description')->nullable();  
+            $table->string('category')->nullable();  
+            $table->string('amount')->nullable();  
+            $table->string('remarks')->nullable();   
+            $table->string('picture')->nullable();   
+            $table->string('user_id')->reference("users")->on('id');  
             $table->integer('active')->default(1);   
             $table->timestamps();
         });
