@@ -14,7 +14,7 @@ class CreateMgtAnimalsTable extends Migration
     public function up()
     {
         Schema::create('mgt_animals', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->text('name')->nullable();   
             $table->text('farm_name')->nullable();  
             $table->integer('type')->reference("tbl_generals")->on('id');   

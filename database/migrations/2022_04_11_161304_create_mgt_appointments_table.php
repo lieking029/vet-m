@@ -14,7 +14,7 @@ class CreateMgtAppointmentsTable extends Migration
     public function up()
     {
         Schema::create('mgt_appointments', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->integer('ref_id');  
             $table->integer('service_id')->reference("mgt_services")->on('id');  
             $table->float('type')->nullable();    

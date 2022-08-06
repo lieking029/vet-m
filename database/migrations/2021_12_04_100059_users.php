@@ -14,7 +14,7 @@ class Users extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();//this is our reference for other table for relationship 
+            $table->bigIncrements('id');//this is our reference for other table for relationship 
             $table->integer('type')->default(1);   
             $table->text('nick_name')->nullable();     
             $table->text('first_name')->nullable();     

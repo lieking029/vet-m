@@ -14,7 +14,7 @@ class CreateMgtSalesTable extends Migration
     public function up()
     {
         Schema::create('mgt_sales', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->text('product_id')->reference("mgt_products")->on('id');  
             $table->text('quantity')->nullable();
             $table->integer('amount')->default(0)->nullable();

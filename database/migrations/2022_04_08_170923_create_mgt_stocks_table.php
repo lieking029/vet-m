@@ -14,7 +14,7 @@ class CreateMgtStocksTable extends Migration
     public function up()
     {
         Schema::create('mgt_stocks', function (Blueprint $table) {
-            $table->id();
+            $table->bigIncrements('id');
             $table->timestamps();
         });
     }
