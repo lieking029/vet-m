@@ -14,7 +14,7 @@ class CreateMgtServicesTable extends Migration
     public function up()
     {
         Schema::create('mgt_services', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->text('name')->nullable();  
             $table->text('description')->nullable();  
             $table->text('amount')->nullable();  

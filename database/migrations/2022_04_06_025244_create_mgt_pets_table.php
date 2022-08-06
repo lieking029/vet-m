@@ -14,7 +14,7 @@ class CreateMgtPetsTable extends Migration
     public function up()
     {
         Schema::create('mgt_pets', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->text('name')->nullable();  
             $table->text('birth_date')->nullable();  
             $table->text('breed')->nullable();    

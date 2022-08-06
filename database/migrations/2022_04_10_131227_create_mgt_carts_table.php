@@ -14,7 +14,7 @@ class CreateMgtCartsTable extends Migration
     public function up()
     {
         Schema::create('mgt_carts', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
             $table->text('product_id')->reference("mgt_products")->on('id');  
             $table->text('quantity')->nullable();
             $table->text('user_id')->reference("users")->on('id');  
