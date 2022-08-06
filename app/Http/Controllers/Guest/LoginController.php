@@ -5,14 +5,11 @@ namespace App\Http\Controllers\Guest;
 use App\Exceptions\VerifyEmailException;
 use App\Http\Controllers\Controller;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request; 
 use Illuminate\Validation\ValidationException; 
 
 class LoginController extends Controller
 {
-    use AuthenticatesUsers;
-
     /**
      * Create a new controller instance.
      *
