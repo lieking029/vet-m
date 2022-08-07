@@ -70,7 +70,7 @@
         </v-toolbar>
         <br />
         <v-card-text>
-          <v-row> 
+          <v-row>
             <v-col class="p-1" cols="12" xl="12" >
               <v-select
                 v-model="param.year"
@@ -112,7 +112,7 @@
       </v-card>
     </v-dialog>
   </v-card-text>
-</template> 
+</template>
 
 <script>
 import { mapGetters } from "vuex";
@@ -132,7 +132,7 @@ export default {
     dialog: false,
     print: '',
     list_year: [],
-    list_status: [], 
+    list_status: [],
     list_active: [
       { name: "All", id: "" },
       { name: "Active", id: "1" },
@@ -144,11 +144,11 @@ export default {
       message: "",
     },
     btns: [
-      { name: "Orders", img: "/img/reports/a1.png", route: "a", param1: 0 },
-      { name: "Pets", img: "/img/reports/a2.png", route: "b", param1: 0 },
-      { name: "Animals", img: "/img/reports/a5.png", route: "c", param1: 0 },
-      { name: "Appointments", img: "/img/reports/a3.png", route: "d", param1: 0 }, 
-      { name: "Clients", img: "/img/reports/a4.png", route: "e", param1: 0 },
+      { name: "Orders", img: "https://provincial-veterinary-clinic.herokuapp.com/img/Reports/a1.png", route: "a", param1: 0 },
+      { name: "Pets", img: "https://provincial-veterinary-clinic.herokuapp.com/img/Reports/a2.png", route: "b", param1: 0 },
+      { name: "Animals", img: "https://provincial-veterinary-clinic.herokuapp.com/img/Reports/a5.png", route: "c", param1: 0 },
+      { name: "Appointments", img: "https://provincial-veterinary-clinic.herokuapp.com/img/Reports/a3.png", route: "d", param1: 0 },
+      { name: "Clients", img: "https://provincial-veterinary-clinic.herokuapp.com/img/Reports/a4.png", route: "e", param1: 0 },
     ],
   }),
   created() {
@@ -160,33 +160,33 @@ export default {
   methods: {
     chooseParameter(row) {
 
-      this.param.row = row; 
+      this.param.row = row;
       switch (row) {
         case "a":
         case "b":
-        case "c": 
-        case "d": 
-        case "e": 
+        case "c":
+        case "d":
+        case "e":
           this.getYearType();
-          this.getStatusType(); 
+          this.getStatusType();
            this.param.val = 0;
-        break; 
+        break;
         default: this.param.val = 1; break;
-      } 
+      }
       this.dialog = true;
     },
 
-    
+
     async getYearType() {
       this.list_year.push({ name: "All",id:'' });
       await axios
         .get("/api/vet/reports/year/list")
         .then((result) => {
           for (var key in result.data) {
-            
+
             this.list_year.push({
-              name: result.data[key].year, 
-              id: result.data[key].year, 
+              name: result.data[key].year,
+              id: result.data[key].year,
             });
           }
         });
@@ -196,7 +196,7 @@ export default {
       await axios
         .get("/api/vet/reports/status/list" )
         .then((result) => {
-          for (var key in result.data) { 
+          for (var key in result.data) {
             this.list_status.push({
               name: result.data[key].name,
               id: result.data[key].id,
@@ -206,7 +206,7 @@ export default {
     },
 
     async exporting(type) {
-      this.param.type = type;  
+      this.param.type = type;
           if (type == "pdf") {
             await axios({
               url: "/api/vet/reports/export",
@@ -246,7 +246,7 @@ export default {
                 responseType: "arraybuffer",
                 params: this.param,
               })
-              .then((res) => { 
+              .then((res) => {
                 let blob = new Blob([res.data], {
                   type: "application/excel",
                 });
@@ -261,8 +261,8 @@ export default {
                   message: "Successfully exported.",
                 };
               });
-          } 
- 
+          }
+
     },
   },
 };

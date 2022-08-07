@@ -1,6 +1,6 @@
 <template>
   <div>
-  
+
      <v-dialog v-model="sub_dialog" width="900">
         <!-- dialog body -->
         <v-card id="dialog" style="background-color: #dadcdc">
@@ -17,8 +17,8 @@
             style="overflow-y: auto; background-color: #dadcdc"
           >
             <v-card flat class="p-2">
-              <v-row no-gutters> 
-                <v-col cols="12" sm="6" v-if="form.types == '1'"> 
+              <v-row no-gutters>
+                <v-col cols="12" sm="6" v-if="form.types == '1'">
                   <v-card class="p-4" >
                     <v-row>
                       <v-col class="p-2 m-0" cols="12" lg="4">
@@ -27,8 +27,8 @@
                             contain
                             :src="
                               form.picture
-                                ? '/storage/files/vet/pets/picture/' + form.picture
-                                : '/img/pets/a1.jpg'
+                                ? 'https://provincial-veterinary-clinic.herokuapp.com/storage/files/vet/pets/picture/' + form.picture
+                                : 'https://provincial-veterinary-clinic.herokuapp.com/img/Pets/a1.jpg'
                             "
                           >
                           </v-img>
@@ -129,15 +129,15 @@
                 </v-col>
                 <v-col cols="12" sm="6" v-else>
                 <v-card class="p-4" >
-                    <v-row> 
+                    <v-row>
                             <v-col class="p-2 m-0" cols="12" lg="4">
                         <v-card height="100%" width="100%" class="p-2">
                           <v-img
                             contain
                             :src="
                               form.picture
-                                ? '/storage/files/vet/animals/picture/' + form.picture
-                                : '/img/pets/a1.jpg'
+                                ? 'https://provincial-veterinary-clinic.herokuapp.com/storage/files/vet/animals/picture/' + form.picture
+                                : 'https://provincial-veterinary-clinic.herokuapp.com/img/Pets/a1.jpg'
                             "
                           >
                           </v-img>
@@ -201,7 +201,7 @@
                               </template>
                             </v-text-field>
                           </v-col>
-                          
+
                         </v-row>
                       </v-col>
                     </v-row>
@@ -260,7 +260,7 @@
                   </v-card>
 
 
-                </v-col> 
+                </v-col>
 
                 <v-col cols="12" lg="6">
                   <v-card-text>
@@ -272,8 +272,8 @@
                           hide-details="" disabled
                           :items="list_type"
                           @change="getAnimals"
-                          item-text="name" 
-                          item-value="id" 
+                          item-text="name"
+                          item-value="id"
                         >
                           <template slot="label">
                             <div style="font-size: 14px">Type
@@ -283,7 +283,7 @@
                       </v-col>
                       <v-col class="py-1" cols="12" lg="12">
                         <v-menu
-                          ref="menu" 
+                          ref="menu"
                           v-model="menu"
                           :close-on-content-click="false"
                           :return-value.sync="form.date"
@@ -295,7 +295,7 @@
                             <v-text-field
                               v-model="form.dated"
                               dense outlined
-                              :rules="formRules" 
+                              :rules="formRules"
                               hide-details=""
                               readonly disabled
                               v-bind="attrs"
@@ -304,7 +304,7 @@
                               <template slot="label">
                                 <div style="font-size: 14px">
                                   Appointment Date
-                              
+
                                 </div>
                               </template>
                             </v-text-field>
@@ -344,18 +344,18 @@
                           </template>
                         </v-autocomplete>
                       </v-col>
-                      
+
                       <v-col class="py-1" cols="12" lg="12">
                         <v-autocomplete
                           :rules="formRules" disabled
                           v-model="form.service_id" outlined
-                          hide-details="" dense 
+                          hide-details="" dense
                           :items="list_services"
                           item-text="name"
                           item-value="id"
                         >
                           <template slot="label">
-                            <div style="font-size: 14px;">Service 
+                            <div style="font-size: 14px;">Service
                             </div>
                           </template>
                         </v-autocomplete>
@@ -380,10 +380,10 @@
                           <v-row no-gutters>
                           <v-col cols="6">Service Descriptions:</v-col>
                           <v-col cols="6" v-if="form.amount"
-                            > 
+                            >
                               {{
                                 form.descriptions
-                                
+
                               }}</v-col
                           >
                         </v-row>
@@ -398,14 +398,14 @@
                               }}</v-col
                           >
                         </v-row>
-                           
+
                       </v-col>
                          <v-col class="py-1" cols="12" lg="12">
                         <v-select
-                          :rules="formRules"  
+                          :rules="formRules"
                           v-model="form.status" outlined dense
                           hide-details=""
-                          :items="list_status" 
+                          :items="list_status"
                           item-text="name"
                           item-value="id"
                         >
@@ -416,22 +416,22 @@
                         </v-select>
                       </v-col>
                     </v-row>
-                    
+
                        </v-card-text>
-                  <v-card-actions> 
+                  <v-card-actions>
                     <v-spacer></v-spacer>
                     <v-btn color="success"  @click="changeStatus"><v-icon>mdi-save</v-icon>Save</v-btn>
                   </v-card-actions>
                 </v-col>
               </v-row>
-               
+
             </v-card>
           </v-card-text>
           <!-- dialog btn -->
         </v-card>
       </v-dialog>
     <!---------------------------------------------------------------------- datatable  -->
-  
+
       <v-data-table
         dense
         height="400"
@@ -439,13 +439,13 @@
         :loading="progressBar"
         :headers="header"
         :items="data"
-      > 
-    
+      >
+
             <template v-slot:[`item.service`]="{ item }">
         {{item.service.name }}<br>
         <small>{{ item.service.handle_by }}</small>
         </template>
-       <template v-slot:[`item.status.name`]="{ item }"> 
+       <template v-slot:[`item.status.name`]="{ item }">
         <v-chip color="orange" dark>{{ item.status.name }}</v-chip>
         </template>
         <template v-slot:[`item.owner`]="{ item }">
@@ -467,12 +467,12 @@
           >
             <small><v-icon size="15"> mdi-checkbox-marked-outline </v-icon> Process Appointment </small>
           </v-btn>
-         
+
         </template>
-      </v-data-table> 
+      </v-data-table>
   </div>
 </template>
- 
+
 <style>
 .dropzonexz {
   margin: 0px !important;
@@ -496,8 +496,8 @@
 
 <script>
 import axios from "axios";
-import Swal from "sweetalert2"; 
-export default { 
+import Swal from "sweetalert2";
+export default {
   // declarations
   data: () => ({
     page: 1,
@@ -520,7 +520,7 @@ export default {
 
     // sub category
     sub_dialog: false,
-    header: [ 
+    header: [
       { width: "20%", text: "Service", value: "service", sortable: false },
       { width: "40%", text: "Owner", value: "owner", sortable: false },
       { width: "15%", text: "Status", value: "status.name", sortable: false },
@@ -563,9 +563,9 @@ export default {
   mounted() {
     this.getData();
     this.getAnimals();
-    this.getServiceList(); 
-    this.getStatusList(); 
-  
+    this.getServiceList();
+    this.getStatusList();
+
   },
 
   // functions
@@ -579,14 +579,14 @@ export default {
             search: this.search,
           },
         })
-        .then((result) => { 
-          this.data = result.data ; 
+        .then((result) => {
+          this.data = result.data ;
           this.progressBar = false;
         });
     },
 
 
-    async getAnimals() { 
+    async getAnimals() {
       var url = '';
       if(this.form.types == 1){
         url = "/api/vet/appointment/pet/admin/list";
@@ -595,12 +595,12 @@ export default {
       }
       await axios
         .get(url)
-        .then((result) => {    
-          this.list_petname = result.data; 
+        .then((result) => {
+          this.list_petname = result.data;
         });
     },
-    getAnimalDetails(val) {   
-      if(this.form.types == 1){  
+    getAnimalDetails(val) {
+      if(this.form.types == 1){
         this.form.breed = this.list_petname[this.list_petname.indexOf(val) ].breed;
         this.form.gender = this.list_petname[this.list_petname.indexOf(val) ].gender;
         this.form.birth_date = this.list_petname[this.list_petname.indexOf(val) ].birth_date;
@@ -611,7 +611,7 @@ export default {
         this.form.picture = this.list_petname[this.list_petname.indexOf(val) ].picture;
         this.form.status = this.list_petname[this.list_petname.indexOf(val) ].status;
       }
-      else{ 
+      else{
           this.form.type = this.list_petname[this.list_petname.indexOf(val) ].type.name;
         this.form.specific_type = this.list_petname[this.list_petname.indexOf(val) ].specific_type;
         this.form.description = this.list_petname[this.list_petname.indexOf(val) ].description;
@@ -620,24 +620,24 @@ export default {
         this.form.owner = this.list_petname[this.list_petname.indexOf(val) ].owner;
         this.form.email = this.list_petname[this.list_petname.indexOf(val) ].email;
         this.form.phone = this.list_petname[this.list_petname.indexOf(val) ].phone;
-        this.form.address = this.list_petname[this.list_petname.indexOf(val) ].address; 
+        this.form.address = this.list_petname[this.list_petname.indexOf(val) ].address;
         this.form.picture = this.list_petname[this.list_petname.indexOf(val) ].picture;
         this.form.status = this.list_petname[this.list_petname.indexOf(val) ].status;
-      } 
-      
-    }, 
-    async getServiceList() { 
-      await axios.get("/api/vet/appointment/service/list").then((result) => { 
-        this.list_services = result.data; 
-        
+      }
+
+    },
+    async getServiceList() {
+      await axios.get("/api/vet/appointment/service/list").then((result) => {
+        this.list_services = result.data;
+
       });
-    },    
-    async getStatusList() { 
+    },
+    async getStatusList() {
       await axios.get("/api/vet/appointment/status/list").then((result) => {
-        this.list_status = result.data; 
+        this.list_status = result.data;
       });
-    }, 
- 
+    },
+
     async store() {
       if (this.$refs.subForm.validate()) {
         await Swal.fire({
@@ -660,7 +660,7 @@ export default {
             return data;
           },
           allowOutsideClick: () => !Swal.isLoading(),
-        }).then((result) => {  
+        }).then((result) => {
           if (result.value) {
             this.getData();
             this.sub_close();
@@ -676,9 +676,9 @@ export default {
         });
       }
     },
-      sub_editItem(item) {  
+      sub_editItem(item) {
       this.sub_dialog = true;
-      this.editedIndex = this.data.indexOf(item); 
+      this.editedIndex = this.data.indexOf(item);
 
       if(item.type == 1){
         this.form = {
@@ -699,7 +699,7 @@ export default {
         picture: item.details.picture,
         remarks: item.remarks,
         status: item.status,
-      }; 
+      };
       }else{
           this.form = {
         id: item.id,
@@ -712,28 +712,28 @@ export default {
         count:  item.details.count,
         description: item.details.description,
         farm_name: item.details.farm_name,
-        type: item.details.types.name, 
-        specific_type: item.details.specific_type, 
+        type: item.details.types.name,
+        specific_type: item.details.specific_type,
         picture: item.details.picture,
 
-  
+
         owner: item.details.owner,
         email: item.details.email,
         phone: item.details.phone,
-        address: item.details.address,  
+        address: item.details.address,
         status: item.status,
-      };  
+      };
       this.form.descriptions = item.service.description;
       }
-  
+
         this.getAnimals()
-   
-       
-       
+
+
+
     },
 
-    
-    async changeStatus() {  
+
+    async changeStatus() {
       await Swal.fire({
         title: "Do you want to process appointment?",
         icon: "question",
@@ -743,7 +743,7 @@ export default {
         confirmButtonText: "Yes",
         cancelButtonText: "No",
         showLoaderOnConfirm: true,
-        preConfirm: async () => { 
+        preConfirm: async () => {
           const { data } = await axios.post("/api/vet/appointment/process",  this.form);
           return data;
         },
@@ -784,7 +784,7 @@ export default {
 
       types: 1,
       descriptions: "",
-      }; 
+      };
     },
 
     // roles

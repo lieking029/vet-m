@@ -38,7 +38,7 @@
             label="Search"
           ></v-text-field>
 
-         
+
           <v-btn
             small
             color="orange"
@@ -51,7 +51,7 @@
       </template>
 
       <template v-slot:[`item.active`]="{ item }">
-       
+
         <v-switch
           dense
           color="success"
@@ -83,7 +83,7 @@
               <v-icon size="15"> mdi-pencil </v-icon>
             </small>
           </v-btn>
-        </v-hover> 
+        </v-hover>
       </template>
     </v-data-table>
 
@@ -108,8 +108,8 @@
                   <v-img
                     width="190"
                     height="190"
-                    :src="(form.picture? '/storage/files/vet/user/'+form.picture :'/img/profile.png')"
-                  > 
+                    :src="(form.picture? 'https://provincial-veterinary-clinic.herokuapp.com/storage/files/vet/user/'+form.picture :'https://provincial-veterinary-clinic.herokuapp.com/img/profile.png')"
+                  >
                   </v-img><v-card-actions>
                     <vue-dropzone
                       ref="myVueDropzone"
@@ -133,7 +133,7 @@
                 </v-card>
               </v-col>
               <v-col cols="12" lg="8">
-                <v-row> 
+                <v-row>
                    <v-col cols="12" lg="6">
                     <v-text-field
                       v-model="form.nick_name"
@@ -145,7 +145,7 @@
                       </template></v-text-field
                     >
                   </v-col>
-                  
+
                   <v-col cols="12" lg="6">
                     <v-select
                       :rules="formRules"
@@ -201,7 +201,7 @@
                   </v-col>
                 </v-row>
                 <v-row>
-                   <v-col cols="12" lg="12">  
+                   <v-col cols="12" lg="12">
                          <v-menu
                               ref="menu"
                               v-model="menu"
@@ -275,7 +275,7 @@
                       </template>
                     </v-text-field>
                   </v-col>
-                 
+
                   <v-col cols="12" lg="12">
                     <v-text-field
                       v-model="form.contact_no"
@@ -318,15 +318,15 @@
                 </v-row>
               </v-col>
             </v-row>
- 
+
           </v-card>
         </v-form>
       </v-card>
     </v-dialog>
   </div>
-</template> 
+</template>
 <style>
-.dropzonex { 
+.dropzonex {
   position: absolute;
   top: 160px;
   margin: 0px !important;
@@ -369,7 +369,7 @@ export default {
     progressBar: false,
     search: "",
     rowsPerPageItems: [10, 25, 50, 100],
-    headers: [ 
+    headers: [
       {
         class: "border ",
         text: "Fullname",
@@ -415,7 +415,7 @@ export default {
       email: "",
       active: "",
       type: "",
- 
+
     },
     list_user_type: [{
       name: 'Admin', id: "2"
@@ -465,8 +465,8 @@ export default {
     }
   },
   methods: {
-    uploadSuccess: function (file, result) {   
-        this.form.picture =  result  ; 
+    uploadSuccess: function (file, result) {
+        this.form.picture =  result  ;
     },
     uploadQueComplete: function (file) {
       this.$refs.myVueDropzone.removeAllFiles(file);
@@ -523,7 +523,7 @@ export default {
           return data;
         },
         allowOutsideClick: () => !Swal.isLoading(),
-      }).then((result) => { 
+      }).then((result) => {
         console.log(result.value)
         if (result.value) {
           Swal.fire({
@@ -558,7 +558,7 @@ export default {
             return data;
           },
           allowOutsideClick: () => !Swal.isLoading(),
-        }).then((result) => { 
+        }).then((result) => {
           if (result.value) {
             console.log(result.value)
             if (result.value == 1) {
@@ -582,14 +582,14 @@ export default {
         });
       }
     },
-    editItem(row) {  
+    editItem(row) {
       console.log(row)
-      this.form.id = row.id; 
-      this.form.picture = row.picture;  
+      this.form.id = row.id;
+      this.form.picture = row.picture;
       this.form.nick_name = row.nick_name;
       this.form.first_name = row.first_name;
       this.form.last_name = row.last_name;
-      this.form.middle_name = row.middle_name; 
+      this.form.middle_name = row.middle_name;
       this.form.contact_no = row.contact_no;
       this.form.address = row.address;
       this.form.birth_date = row.birth_date;

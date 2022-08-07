@@ -50,8 +50,8 @@
                             height="190"
                             :src="
                               form.picture
-                                ? '/storage/files/vet/pets/picture/' + form.picture
-                                : '/img/pets/a1.jpg'
+                                ? 'https://provincial-veterinary-clinic.herokuapp.com/storage/files/vet/pets/picture/' + form.picture
+                                : 'https://provincial-veterinary-clinic.herokuapp.com/img/Pets/a1.jpg'
                             "
                           >
                           </v-img>
@@ -608,7 +608,7 @@
         >
       </v-card-actions>
     </v-card>
- 
+
     <div     v-if="data.length == 0 ">
       <v-card  class="p-4" color="" height="422">
         <h5 class="text-center"><b>No data available</b></h5>
@@ -629,14 +629,14 @@
               <v-img
                 contain
                 v-if="!active"
-                :src="n.picture?'/storage/files/vet/pets/picture/' + n.picture:'/img/pets/a1.jpg'"
+                :src="n.picture?'https://provincial-veterinary-clinic.herokuapp.com/storage/files/vet/pets/picture/' + n.picture:'https://provincial-veterinary-clinic.herokuapp.com/img/Pets/a1.jpg'"
                 class="text-right p-2 my-2"
-                max-height="280" 
-                min-height="280" 
-                min-width="400" 
-              > 
+                max-height="280"
+                min-height="280"
+                min-width="400"
+              >
               </v-img>
-             
+
                <v-card-actions>
                   <p class="caption text-white">
                     My Name: {{ n.name }}
@@ -671,10 +671,10 @@
         </v-card>
       </v-slide-item>
     </v-slide-group>
- 
+
   </div>
 </template>
- 
+
 <style>
 .dropzonexz {
   margin: 0px !important;
@@ -994,7 +994,7 @@ export default {
       }
       this.getAge();
     },
-    async sub_ActiveItem(item) { 
+    async sub_ActiveItem(item) {
       await Swal.fire({
         title:
           "Do you want to " +

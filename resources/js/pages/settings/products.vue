@@ -27,8 +27,8 @@
                         height="230"
                         :src="
                           form.picture
-                            ? '/storage/files/vet/products/' + form.picture
-                            : '/img/settings/a1.jpg'
+                            ? 'https://provincial-veterinary-clinic.herokuapp.com/storage/files/vet/products/' + form.picture
+                            : 'https://provincial-veterinary-clinic.herokuapp.com/img/Settings/a1.jpg'
                         "
                       >
                       </v-img>
@@ -66,7 +66,7 @@
                             </div>
                           </template>
                         </v-text-field>
-                      </v-col>  
+                      </v-col>
                       <v-col class="py-1" cols="12">
                         <v-textarea
                           outlined
@@ -149,7 +149,7 @@
     >
       <template v-slot:top>
         <v-card-actions>
-          
+
           <v-btn
             color="#00794b"
             depressed
@@ -162,7 +162,7 @@
           </v-btn>
 
           <v-spacer></v-spacer>
-        
+
             <v-text-field
               v-model="search"
               small
@@ -171,7 +171,7 @@
               hide-details=""
               label="Search"
               @keyup="getData"
-            ></v-text-field> 
+            ></v-text-field>
 
           <v-btn
             color="orange"
@@ -194,7 +194,7 @@
       ></v-progress-linear>
       <!-- btn -->
       <template v-slot:[`item.id`]="{ item }">
-        
+
 
         <v-btn
           class="px-1 btn btn-primary text-white"
@@ -216,8 +216,8 @@
     </div>
   </div>
 </template>
- 
- 
+
+
 <style>
 .dropzonexx {
   position: absolute;
@@ -243,7 +243,7 @@ export default {
   // declarations
   data: () => ({
     page: 1,
-    search: "", 
+    search: "",
     editedIndex: -1,
     formRules: [(v) => !!v || "This is required"],
     dialog: false,
@@ -279,7 +279,7 @@ export default {
   }),
 
   // load
-  mounted() {  
+  mounted() {
     this.getData();
 
   },
@@ -300,7 +300,7 @@ export default {
         html: result,
       });
     },
- 
+
 
     async getData() {
       this.progressBar = true;
@@ -308,7 +308,7 @@ export default {
         .get("/api/vet/products/list", {
           params: {
             page: this.page,
-            search: this.search, 
+            search: this.search,
           },
         })
         .then((result) => {
@@ -317,7 +317,7 @@ export default {
           this.progressBar = false;
         });
     },
-   
+
     async store() {
       if (this.$refs.mainForm.validate()) {
         await Swal.fire({
@@ -332,7 +332,7 @@ export default {
           confirmButtonText: "Yes",
           cancelButtonText: "No",
           showLoaderOnConfirm: true,
-          preConfirm: async () => { 
+          preConfirm: async () => {
             const { data } = await axios.post(
               "/api/vet/products/save",
               this.form
@@ -356,7 +356,7 @@ export default {
       }
     },
 
-    editItem(item) { 
+    editItem(item) {
       this.editedIndex = this.data.data.indexOf(item);
       for (var key in item) {
         this.form[key] = item[key];
@@ -371,7 +371,7 @@ export default {
       }
       this.editedIndex = -1;
     },
-    
+
   },
   //new of update title
   computed: {

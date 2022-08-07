@@ -1,7 +1,7 @@
 <template>
   <div>
     <guestnav />
-    <v-img height="700" src="/img/register/a9.jpg">
+    <v-img height="700" src="https://provincial-veterinary-clinic.herokuapp.com/img/Register/a9.jpg">
       <br /><br /><br />
       <v-form ref="form">
         <v-row no-gutters>
@@ -202,7 +202,7 @@
       ></v-form>
     </v-img>
   </div>
-</template> 
+</template>
 <script>
 import axios from "axios";
 import Swal from "sweetalert2";
