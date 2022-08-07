@@ -51,7 +51,7 @@
                             height="190"
                             :src="
                               form.picture
-                                ? '../../../../public/storage/files/vet/pets/picture/' + form.picture
+                                ? '../../../../../public/storage/files/vet/pets/picture/' + form.picture
                                     : 'https://provincial-veterinary-clinic.herokuapp.com/img/Pets/a1.jpg'
                             "
                           >
