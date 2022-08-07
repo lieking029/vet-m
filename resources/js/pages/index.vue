@@ -7,7 +7,7 @@
         :aspect-ratio="5 / 1"
         style="padding-top: 30px"
         class="p-4"
-        src="/img/register/a10.jpg"
+        src="https://provincial-veterinary-clinic.herokuapp.com/img/Register/a10.jpg"
       >
         <v-card-text class="text-white">
           <v-row>
@@ -91,7 +91,7 @@
             <v-row no-gutters>
               <v-col cols="12" sm="6">
                 <v-card class="p-4">
-                  <v-carousel 
+                  <v-carousel
     hide-delimiter-background
     show-arrows-on-hover height="250">
                     <v-carousel-item>
@@ -110,7 +110,7 @@
                               advocate a conducive environment for investments
                               through synergistic approach with the highest
                               degree of integrity
-                            </h6> 
+                            </h6>
                           </v-col>
                         </v-row>
                       </v-sheet>
@@ -129,10 +129,10 @@
                               development and state-of-the-art infrastructure
                               and home of God-loving and family centered people
                               governed by dedicated and professional
-                              political leadership committed to one vision and 
+                              political leadership committed to one vision and
                               shared responsibilities geared toward better quality
                               lif for Batangueños
-                            </h6> 
+                            </h6>
                           </v-col>
                         </v-row>
                       </v-sheet>
@@ -204,7 +204,7 @@
       </v-card-text>
     </v-col>
   </v-row>
-</template> 
+</template>
 <script>
 import guestnav from "../Components/Nav_guest.vue";
 export default {
