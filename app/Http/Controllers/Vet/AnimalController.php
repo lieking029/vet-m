@@ -85,7 +85,7 @@ class AnimalController extends Controller
             $img = $request->file[0];
             $newfilename = $img->getClientOriginalName() . "~" . time() . '.' . $img->getClientOriginalExtension();
             $temp['imagename'] = $newfilename;
-            $img->storeAs('public/files/vet/pets/picture/', $newfilename); 
+            $img->storeAs('files/vet/pets/picture/', $newfilename); 
         return  $newfilename  ;
     }
 
