@@ -26,7 +26,7 @@
                         <v-row>
                           <v-col cols="12" lg="4">
                             <v-card width="200" height="200" class="p-2 m-2">
-                              <v-img
+                              <img
                                 width="190"
                                 contain
                                 height="190"
@@ -37,7 +37,7 @@
                                     : 'https://provincial-veterinary-clinic.herokuapp.com/img/Pets/a1.jpg'
                                 "
                               >
-                              </v-img>
+                              <!-- </img> -->
                               <v-card-actions>
                                 <vue-dropzone
                                   ref="myVueDropzonex"
