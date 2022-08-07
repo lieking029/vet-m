@@ -7,7 +7,7 @@
         :aspect-ratio="5 / 1"
         style="padding-top: 30px"
         class="p-4"
-        src="/img/register/a10.jpg"
+        src="https://provincial-veterinary-clinic.herokuapp.com/img/Register/a10.jpg"
       >
         <v-card-text class="text-white">
           <v-row>
@@ -77,7 +77,7 @@
                 width="400"
                 height="400"
                 contain
-                src="/img/register/a3.png"
+                src="https://provincial-veterinary-clinic.herokuapp.com/img/Register/a3.png"
               ></v-img>
             </v-col>
           </v-row>
@@ -86,12 +86,12 @@
     </v-col>
     <v-col cols="12">
       <v-card>
-        <v-img contain src="/img/register/a7.jpg">
+        <v-img contain src="https://provincial-veterinary-clinic.herokuapp.com/img/Register/a7.jpg">
           <v-container>
             <v-row no-gutters>
               <v-col cols="12" sm="6">
                 <v-card class="p-4">
-                  <v-carousel 
+                  <v-carousel
     hide-delimiter-background
     show-arrows-on-hover height="250">
                     <v-carousel-item>
@@ -110,7 +110,7 @@
                               advocate a conducive environment for investments
                               through synergistic approach with the highest
                               degree of integrity
-                            </h6> 
+                            </h6>
                           </v-col>
                         </v-row>
                       </v-sheet>
@@ -129,17 +129,17 @@
                               development and state-of-the-art infrastructure
                               and home of God-loving and family centered people
                               governed by dedicated and professional
-                              political leadership committed to one vision and 
+                              political leadership committed to one vision and
                               shared responsibilities geared toward better quality
                               lif for Batangueños
-                            </h6> 
+                            </h6>
                           </v-col>
                         </v-row>
                       </v-sheet>
                     </v-carousel-item>
                   </v-carousel> <v-img
                               height="400"
-                              src="/img/register/a4.png"
+                              src="https://provincial-veterinary-clinic.herokuapp.com/img/Register/a4.png"
                             ></v-img>
                 </v-card>
               </v-col>
@@ -151,7 +151,7 @@
                 top: 60px;
                 position: absolute;
               "
-              src="/img/register/a6.png"
+              src="https://provincial-veterinary-clinic.herokuapp.com/img/Register/a6.png"
             ></v-img>
           </v-container>
         </v-img>
@@ -196,7 +196,7 @@
           <v-col class="text-center mt-12" cols="12" sm="4">
             <v-col>
               <v-container>
-                <v-img contain width="400" src="/img/register/a11.png"></v-img>
+                <v-img contain width="400" src="https://provincial-veterinary-clinic.herokuapp.com/img/Register/a11.PNG"></v-img>
               </v-container>
             </v-col>
           </v-col>
@@ -204,7 +204,7 @@
       </v-card-text>
     </v-col>
   </v-row>
-</template> 
+</template>
 <script>
 import guestnav from "../Components/Nav_guest.vue";
 export default {

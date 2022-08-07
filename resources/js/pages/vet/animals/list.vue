@@ -20,8 +20,8 @@
             <v-card flat class="p-4">
               <v-row>
                 <v-col cols="12" sm="6">
-                  <v-card class="p-4"> 
-                    <v-row>        <span><b>Animal Informations</b></span> 
+                  <v-card class="p-4">
+                    <v-row>        <span><b>Animal Informations</b></span>
                       <v-col class="py-1" cols="12" lg="12">
                         <v-row>
                           <v-col cols="12" lg="4">
@@ -34,7 +34,7 @@
                                   form.picture
                                     ? '../../public/storage/files/vet/animals/picture/' +
                                       form.picture
-                                    : '/img/pets/a1.jpg'
+                                    : 'https://provincial-veterinary-clinic.herokuapp.com/img/Pets/a1.jpg'
                                 "
                               >
                               </v-img>
@@ -58,7 +58,7 @@
                           </v-col>
                           <v-col class="py-1" cols="12" lg="8">
                                <v-row>
-                                 <v-spacer></v-spacer> 
+                                 <v-spacer></v-spacer>
                                 <v-col cols="4">
                                   <v-select
                                     :rules="formRules"
@@ -188,11 +188,11 @@
                             >
                           </v-col>
 
-                    
-                     
+
+
                         </v-row>
                       </v-col>
-               
+
 
                       <v-col class="py-1" cols="12" lg="12">
                         <v-textarea
@@ -576,7 +576,7 @@
     </v-data-table>
   </div>
 </template>
- 
+
 <style>
 .dropzonexz {
   margin: 0px !important;

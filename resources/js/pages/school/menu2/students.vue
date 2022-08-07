@@ -114,7 +114,7 @@
             <v-row>
               <v-col cols="12" lg="3">
                 <v-card width="150" height="150" class="p-2 m-2">
-                  <v-img width="130" height="130" src="/img/logo.png"> </v-img
+                  <v-img width="130" height="130" src="https://provincial-veterinary-clinic.herokuapp.com/img/Dashboard/logo.png"> </v-img
                 ></v-card>
               </v-col>
               <v-col cols="12" lg="9">
@@ -234,7 +234,7 @@
                     <v-icon>mdi-flag</v-icon>
                   </v-tab>
                   <v-tab-item>
-                     
+
                       <v-data-table
                         fixed-header
                         :headers="header1"
@@ -243,7 +243,7 @@
                         :items-per-page="5"
                         height="155"
                       >
-                      </v-data-table> 
+                      </v-data-table>
                   </v-tab-item>
                   <v-tab>
                     <small>Teachers</small>
@@ -258,7 +258,7 @@
                         height="155"
                       >
                       </v-data-table> </v-tab-item>
-                
+
                 </v-tabs>
               </v-col>
             </v-row>
@@ -267,7 +267,7 @@
       </v-card>
     </v-dialog>
   </div>
-</template> 
+</template>
 
 <script>
 import { mapGetters } from "vuex";
@@ -395,7 +395,7 @@ export default {
           return data;
         },
         allowOutsideClick: () => !Swal.isLoading(),
-      }).then((result) => { 
+      }).then((result) => {
         if (result.value) {
           Swal.fire({
             type: "success",

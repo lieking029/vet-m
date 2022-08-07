@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container>
-    <v-card-text> 
+    <v-card-text>
        <v-row>
         <v-col class="text-white">
           <h2>Services</h2>
@@ -9,10 +9,10 @@
       </v-row>
       <hr class="m-2 white" />
       <v-card class="mb-2">
-        
-           <v-card-actions >  
-                <v-autocomplete 
-            v-model="search"  dense  
+
+           <v-card-actions >
+                <v-autocomplete
+            v-model="search"  dense
             hide-details=""
             :items="list_services"
             @change="getData(); page = 1"
@@ -20,7 +20,7 @@
             item-value="name"
           >
             <template slot="label"> Services </template>
-                </v-autocomplete> 
+                </v-autocomplete>
                 <v-spacer></v-spacer>
                   <v-pagination
                   v-model="page"
@@ -28,20 +28,20 @@
                   :length="data.last_page"
                   color="red darken-2"
                 ></v-pagination>
-              </v-card-actions> 
+              </v-card-actions>
       </v-card>
-      
-        <v-row> 
+
+        <v-row>
           <v-col v-for="(vals, keys) in data.data" :key="keys" cols="12" sm="4">
             <v-card >
               <v-row no-gutters>
                 <v-col cols="12" sm="12">
                   <v-img
-                    :src="`/storage/files/vet/services/` + vals.picture"
+                    :src="`https://provincial-veterinary-clinic.herokuapp.com/storage/files/vet/services/` + vals.picture"
                     height="200px"
                   >
                     <span
-                      class="text-h5 white--text pl-4 pt-4 d-inline-block" 
+                      class="text-h5 white--text pl-4 pt-4 d-inline-block"
                     ></span>
                   </v-img>
                 </v-col>
@@ -50,7 +50,7 @@
                     <strong class="header text-dark">{{ vals.name }}</strong>
                   </h5>
                  {{ vals.description }} <br>
-                 
+
                 Fee: {{ vals.amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") }}
                   </v-card>
                   <hr class="m-1" />
@@ -59,18 +59,18 @@
 
               <v-card-actions class="white">
                 <v-spacer></v-spacer>
-                <v-btn depressed text color="info" small :to="{ name: 'appointments'}"  
+                <v-btn depressed text color="info" small :to="{ name: 'appointments'}"
                   >Apply for appointment</v-btn
                 >
               </v-card-actions>
             </v-card>
           </v-col>
-        </v-row>  
+        </v-row>
     </v-card-text>
     </v-container>
   </div>
 </template>
-  
+
 
 
 <script>
@@ -93,13 +93,13 @@ export default {
 
   // load
   mounted() {
-    this.getData(); 
+    this.getData();
   },
 
   // functions
   methods: {
     // main
-    async getData() { 
+    async getData() {
       this.progressBar = true;
       await axios
         .get("/api/vet/services/list", {
@@ -110,7 +110,7 @@ export default {
         })
         .then((result) => {
           this.data = result.data.data;
-          this.progressBar = false; 
+          this.progressBar = false;
           this.list_services = result.data.services
           this.list_services.unshift({name: 'All'})
         });

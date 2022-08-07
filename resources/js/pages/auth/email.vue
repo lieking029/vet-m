@@ -1,15 +1,15 @@
 <template>
   <div>
      <guestnav />
-    <v-img height="780" src="/img/register/a9.jpg">
+    <v-img height="780" src="https://provincial-veterinary-clinic.herokuapp.com/img/register/a9.jpg">
       <br /><br /><br />
-          <v-card-text class="">   
+          <v-card-text class="">
     <v-container>
       <v-row >
-            <v-col lg="12" cols="12"> 
+            <v-col lg="12" cols="12">
           <v-card class="ml-auto text-white skewed" width="400">
             <v-card width="470" flat class="transparent mx-auto p-4">
-            
+
               <v-row>
                 <v-col class="text-center">
                   <h4>Reset Password</h4>
@@ -49,7 +49,7 @@
                     <v-btn
                       block small style="text-transform: none;"
                       :loading="form.busy"       class="info"
-                      @click="send" 
+                      @click="send"
                     >
                       Send reset link
                     </v-btn>
@@ -58,7 +58,7 @@
                     <v-btn
                       depressed
                       small
-                      text 
+                      text
                       color="primary"
                       :to="{ name: 'login' }"
                       style="text-decoration: none"
@@ -71,9 +71,9 @@
           </v-card>
         </v-col>
       </v-row>
-    </v-container> 
+    </v-container>
           </v-card-text>
-    </v-img> 
+    </v-img>
   </div>
 </template>
 

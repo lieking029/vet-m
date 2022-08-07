@@ -1,5 +1,5 @@
 <template>
-  <div> 
+  <div>
 
     <v-form ref="subForm" id="subForm">
       <!---------------------------------------------------------------------- sub category  -->
@@ -51,8 +51,8 @@
                             height="190"
                             :src="
                               form.picture
-                                ? '/storage/files/vet/pets/picture/' + form.picture
-                                    : '/img/pets/a1.jpg'
+                                ? 'https://provincial-veterinary-clinic.herokuapp.com/storage/files/vet/pets/picture/' + form.picture
+                                    : 'https://provincial-veterinary-clinic.herokuapp.com/img/Pets/a1.jpg'
                             "
                           >
                           </v-img>
@@ -573,7 +573,7 @@
     </v-form>
 
     <!---------------------------------------------------------------------- datatable  -->
-  
+
 
 
     <v-data-table
@@ -584,28 +584,28 @@
       :items="data"
     >
       <template v-slot:top>
-        <v-card-actions> 
+        <v-card-actions>
 
           <v-btn
             color="#00794b"
             depressed
             style="text-transform: none"
-            dark 
+            dark
             @click="sub_dialog = true"
           >
             <v-icon>mdi-plus</v-icon> New Pet
           </v-btn>
 
           <v-spacer></v-spacer>
-          
+
           <v-col class="py-0 pl-0" xl="6" lg="6" cols="12">
             <v-text-field
               v-model="search"
               small
-              outlined 
+              outlined
               dense
               hide-details=""
-            
+
             label="Search (Name, Breed or Owner)"
               @keyup="getData"
             ></v-text-field>
@@ -651,7 +651,7 @@
           dark
           v-if="item.active == 2"
           @click="sub_ActiveItem(item)"
-          ><v-icon>mdi-checkbox-marked-outline</v-icon> 
+          ><v-icon>mdi-checkbox-marked-outline</v-icon>
         </v-btn>
         <v-btn
           color="danger"
@@ -659,15 +659,15 @@
           dark
           v-if="item.active == 1"
           @click="sub_ActiveItem(item)"
-          ><v-icon>mdi-close-circle</v-icon> 
+          ><v-icon>mdi-close-circle</v-icon>
         </v-btn>
       </template>
 
-   
+
     </v-data-table>
   </div>
 </template>
- 
+
 <style>
 .dropzonexz {
   margin: 0px !important;
@@ -900,7 +900,7 @@ export default {
         }).then((result) => { this.data = result.data;
         }).catch(except=>{});
         this.progressBar = false;
-    }, 
+    },
     // Save / Update
     async store() {
       if (this.$refs.subForm.validate()) {
@@ -923,7 +923,7 @@ export default {
             return data;
           },
           allowOutsideClick: () => !Swal.isLoading(),
-        }).then((result) => { 
+        }).then((result) => {
           if (result.value) {
             this.getData();
             this.sub_close();
@@ -939,7 +939,7 @@ export default {
         });
       }
     },
-    sub_editItem(item) { 
+    sub_editItem(item) {
       this.sub_dialog = true;
       this.editedIndex = this.data.indexOf(item);
       this.allergies = [];
@@ -978,7 +978,7 @@ export default {
       }
       this.getAge();
     },
-    async sub_ActiveItem(item) { 
+    async sub_ActiveItem(item) {
       await Swal.fire({
         title:
           "Do you want to " +

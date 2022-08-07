@@ -9,23 +9,23 @@
     >
       <v-container>
         <v-card-text  >
-          <v-toolbar-title 
+          <v-toolbar-title
         @click="$router.push({ name: 'main' }).catch((err) => {})">
           <v-row no-gutters>
             <v-col cols="2">
               <v-card-actions>
-              <v-img 
+              <v-img
                 contain
                 width="5"
                 height="60"
-                src="/img/dashboard/logo.png"
+                src="https://provincial-veterinary-clinic.herokuapp.com/img/Dashboard/logo.png"
               >
               </v-img
-            > <v-img 
+            > <v-img
                 contain
                 width="5"
                 height="50"
-                src="/img/dashboard/logo1.png"
+                src="https://provincial-veterinary-clinic.herokuapp.com/img/Dashboard/logo1.png"
               >
               </v-img
             ></v-card-actions></v-col>

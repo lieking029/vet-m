@@ -3,16 +3,16 @@
     <v-card-text class="p-1">
       <v-row>
         <v-col class="text-white">
-        
+
           <h2>Hi, {{ user.first_name }}</h2>
         </v-col>
       </v-row>
       <hr class="m-2 white" />
- 
+
       <v-row>
         <v-col cols="6"  >
           <v-row no-gutters>
- 
+
 
             <v-col
               v-for="(val, key) in items"
@@ -38,20 +38,20 @@
                 >
               </v-card>
             </v-col>
- 
+
 
           </v-row>
-        </v-col> 
-        <v-col cols="6"  > 
+        </v-col>
+        <v-col cols="6"  >
           <v-container class="text-white" style="height: 400px">
             <div >
             <h6><b>Appointments</b></h6>
             <hr>
             <div v-if="appointments_data.length == 0" class="text-center">No Appointments found</div>
-            
-       
-            
-            
+
+
+
+
     <v-row v-else align="center">
     <v-item-group
       v-model="window"
@@ -76,53 +76,53 @@
     </v-item-group>
 
     <v-col>
-      <v-window 
+      <v-window
       v-model="window"
         class=" text-white"
         vertical
       >  {{ appointments_data }}
-        <v-window-item 
+        <v-window-item
           v-for="(v,k) in appointments_data"
           :key="k"
         >
-      
+
           <v-card class="p-2 " flat>
             <v-card-text>
               <v-row
                 class="mb-4"
                 align="center"
-              >   
+              >
                 <v-avatar
                   color="grey"
                   class="mr-4" size="60"
                 >
-              
-            
-                <v-img v-if="v.pet.picture" :src="'/storage/files/vet/animal/'+v.pet.picture"></v-img>
+
+
+                <v-img v-if="v.pet.picture" :src="'https://provincial-veterinary-clinic.herokuapp.com/storage/files/vet/animal/'+v.pet.picture"></v-img>
                 </v-avatar>
-                <strong > <div class="text-h6">{{ v.pet.name  }}</div> 
-                  <small>{{ v.dated }}</small></strong> 
+                <strong > <div class="text-h6">{{ v.pet.name  }}</div>
+                  <small>{{ v.dated }}</small></strong>
               </v-row>
 
               <strong>{{ v.service }} </strong>
               <hr>
               <p>{{ v.remarks }} </p>
 
-              
+
             </v-card-text>
           </v-card>
         </v-window-item>
       </v-window>
     </v-col>
   </v-row>
-            
-            
-            
-            
-            </div> 
+
+
+
+
+            </div>
             </v-container>
-        </v-col> 
-      </v-row>  
+        </v-col>
+      </v-row>
 
       <v-overlay :value="overlay">
         <v-progress-circular indeterminate size="64"></v-progress-circular
@@ -184,7 +184,7 @@ export default {
     }
   },
 
- 
+
   methods: {
     getFormatDate(e, format) {
       const date = moment(e);
@@ -203,16 +203,16 @@ export default {
       await axios.get("/api/vet/dashboard/counts").then((result) => {
 
         this.items = [
-              
-          { text: "My Pets", value: result.data.pets, image: "/img/dashboard/aaaa.png" },
-          { text: "My Animals", value:  result.data.animals, image: "/img/dashboard/aaaaaa.png" },
+
+          { text: "My Pets", value: result.data.pets, image: "https://provincial-veterinary-clinic.herokuapp.com/img/Dashboard/aaaa.png" },
+          { text: "My Animals", value:  result.data.animals, image: "https://provincial-veterinary-clinic.herokuapp.com/img/Dashboard/aaaaaa.png" },
           { text: "Appointments",
             value: result.data.appointments,
-            image: "/img/dashboard/aaaaa.png",
+            image: "https://provincial-veterinary-clinic.herokuapp.com/img/Dashboard/aaaaa.png",
           },
-          { text: "Orders", value:  result.data.orders, image: "/img/dashboard/aaa.png" },
-        
-        ] 
+          { text: "Orders", value:  result.data.orders, image: "https://provincial-veterinary-clinic.herokuapp.com/img/Dashboard/aaa.png" },
+
+        ]
       });
     },
 

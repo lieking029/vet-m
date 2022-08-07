@@ -100,7 +100,7 @@
                           <v-col cols="5">
                             <v-img
                               :src="
-                                `/storage/files/vet/products/` + item.picture
+                                `https://provincial-veterinary-clinic.herokuapp.com/storage/files/vet/products/` + item.picture
                               "
                             ></v-img
                           ></v-col>
@@ -168,9 +168,9 @@
               </v-list>
             </v-card>
           </v-dialog>
-          
+
         </v-card-actions>
-      </v-card> 
+      </v-card>
         <v-card-actions>
           <v-spacer></v-spacer>
                <v-pagination
@@ -186,7 +186,7 @@
               <v-row no-gutters>
                 <v-col cols="12">
                   <v-img
-                    :src="`/storage/files/vet/products/` + vals.picture"
+                    :src="`https://provincial-veterinary-clinic.herokuapp.com/storage/files/vet/products/` + vals.picture"
                     height="270px"
                   >
                     <span
@@ -209,7 +209,7 @@
               </v-card-actions>
             </v-card>
           </v-col>
-        </v-row> 
+        </v-row>
     </v-card-text>
 </v-container>
     <v-dialog v-model="dialog_cart" width="600">
@@ -233,7 +233,7 @@
                 <v-col cols="12" sm="6">
                   <v-img
                     height="270px"
-                    :src="'/storage/files/vet/products/' + form_cart.picture"
+                    :src="'https://provincial-veterinary-clinic.herokuapp.com/storage/files/vet/products/' + form_cart.picture"
                   ></v-img>
                 </v-col>
                 <v-col cols="12" sm="6">
@@ -297,7 +297,7 @@
     </v-dialog>
   </div>
 </template>
-  
+
 
 
 <script>
@@ -377,7 +377,7 @@ export default {
         this.list_category = result.data;
           this.list_category.unshift({ category: 'All'})
       });
-    }, 
+    },
     async itemChange(val, type) {
       if (type == "-") {
         this.overlay = true;
@@ -394,7 +394,7 @@ export default {
 
       val.type = type;
       await axios.post("/api/vet/shop/cart/change", val).then((result) => {
-        this.getCart(); 
+        this.getCart();
         this.overlay = false;
       });
     },
@@ -451,7 +451,7 @@ export default {
           });
         }
       });
-    }, 
+    },
 
     addcart(val) {
       this.form_cart.name = val.name;
@@ -461,7 +461,7 @@ export default {
       this.form_cart.picture = val.picture;
       this.form_cart.product_id = val.id;
       this.dialog_cart = true;
-    }, 
+    },
     async addtocart() {
       if (this.$refs.addcartform.validate()) {
         if (this.form_cart.quantity < 1) {

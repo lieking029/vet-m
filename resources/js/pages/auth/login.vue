@@ -1,7 +1,7 @@
 <template>
-  <div>  
-    <guestnav />  
-    <v-img height="760" src="/img/register/a9.jpg">
+  <div>
+    <guestnav />
+    <v-img height="760" src="https://provincial-veterinary-clinic.herokuapp.com/img/Register/a9.jpg">
 
     <v-overlay :value="overlay">
       <v-progress-circular
@@ -9,19 +9,19 @@
         color="blue darken-2"
         indeterminate
       ></v-progress-circular>
-    </v-overlay>   
+    </v-overlay>
     <br>
     <br>
     <br>
-     
-    <v-card-text class=""> 
+
+    <v-card-text class="">
       <v-container>
         <template v-if="token == ''">
           <v-row>
-            <v-col xl="12" cols="12"> 
+            <v-col xl="12" cols="12">
               <v-card flat class="transparent  ml-auto text-white  " width="400">
                 <v-card width="400"   class="  mx-auto p-4">
-               
+
                   <v-form
                     ref="form"
                     @submit.prevent="login" @keydown="form.onKeydown($event)"
@@ -29,7 +29,7 @@
                     <v-row>
                       <v-col cols="12">
                         <h6>
-                          <v-icon>mdi-sing-in</v-icon> Sign-in   <br /> 
+                          <v-icon>mdi-sing-in</v-icon> Sign-in   <br />
                         </h6>
                         <div class="text-muted"></div>
                       </v-col>
@@ -71,14 +71,14 @@
                       </v-col>
                     </v-row>
 
-                    <v-row> 
+                    <v-row>
                       <v-col class="py-1" cols="12">
                         <v-card-actions>
                                <v-btn
                           depressed
                           small
                           text
-                          :loading="form.busy" 
+                          :loading="form.busy"
                           color="primary"
                         :to="{ name: 'email-password' }"
                           style="text-transform: none"
@@ -89,57 +89,57 @@
                           dark  small
                           depressed type="submit"
                                   class="info"
-                          :loading="form.busy" 
+                          :loading="form.busy"
                           style="text-transform: none"
                           >Ok</v-btn
                         >
                         </v-card-actions>
-                      </v-col> 
+                      </v-col>
                       <v-col class="py-1  " cols="12">
-                        Need an Account? 
+                        Need an Account?
                          <v-btn
                              text
-                           
-                           
-                          color="primary " 
+
+
+                          color="primary "
                             :to="{ name: 'register' }"
                           style="text-transform: none"
                           >Sign-up</v-btn
                         >
-                        
+
                       </v-col>
-                       
+
                     </v-row>
                     <hr>
-                    
+
                       <span>Visit us on</span>
                     <v-row>
                       <v-col>
                         <a  href="https://www.facebook.com/">
-                        <v-icon size="40" color="blue">mdi-facebook-box</v-icon> 
+                        <v-icon size="40" color="blue">mdi-facebook-box</v-icon>
 
                         </a>
                       </v-col>
                     </v-row>
                   </v-form>
-               
+
                 </v-card>
               </v-card>
             </v-col>
           </v-row>
         </template>
-        
+
            </v-container
       >
-        
+
     </v-card-text>
 
     </v-img>
     <v-snackbar
         bottom  style="bottom: 10%;"
-        width="500"  
+        width="500"
       v-model="snackbar.status"
-      min-width="auto" 
+      min-width="auto"
       :color="snackbar.color"
       class="text-center"
       :vertical="$vuetify.breakpoint.xsOnly"
@@ -165,10 +165,10 @@
 
 <script>
 import Form from "vform";
-import axios from "axios"; 
+import axios from "axios";
 import guestnav from "../../Components/Nav_guest.vue";
 export default {
-  middleware: "guest", 
+  middleware: "guest",
     components: {
     guestnav,
   },
@@ -223,8 +223,8 @@ export default {
                 this.snackbar.color = "success";
                 this.snackbar.message = " Welcome to "+ window.config.appName;
                 this.$store.dispatch("auth/fetchUser");
-               this.$router.push({ name: "home" }).catch((errr) => {});  
-                
+               this.$router.push({ name: "home" }).catch((errr) => {});
+
 
               });
           })

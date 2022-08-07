@@ -18,7 +18,7 @@
           <v-card-text style="background-color: #dadcdc">
             <v-card class="p-2">
               <v-container>
-                <v-row> 
+                <v-row>
                   <v-col class="py-1" cols="12"   md="5">
                           <v-card width="250" height="250" class="p-2 m-2">
                           <v-img
@@ -27,8 +27,8 @@
                             height="230"
                             :src="
                               form.picture
-                                ? '/storage/files/vet/services/' + form.picture
-                                    : '/img/pets/a1.jpg'
+                                ? 'https://provincial-veterinary-clinic.herokuapp.com/storage/files/vet/services/' + form.picture
+                                    : 'https://provincial-veterinary-clinic.herokuapp.com/img/Pets/a1.jpg'
                             "
                           >
                           </v-img>
@@ -55,8 +55,8 @@
                               v-model="form.picture"
                               label="Document"
                             ></v-text-field>
-                      </v-col> 
-                      
+                      </v-col>
+
                   <v-col   cols="12"   md="7">
                     <v-row>
                       <v-col class="py-1" cols="12">
@@ -71,7 +71,7 @@
                       <template slot="label">
                         <div style="font-size: 14px; color: red">Service Name *</div>
                       </template>
-                    </v-text-field> 
+                    </v-text-field>
                       </v-col>
                       <v-col class="py-1" cols="12">
   <v-textarea
@@ -87,7 +87,7 @@
                     </v-textarea>
 
                       </v-col>  <v-col class="py-1" cols="12">
-   <v-text-field 
+   <v-text-field
                       outlined
                       dense
                       hide-details=""
@@ -101,7 +101,7 @@
 
                       </v-col>
                       <v-col class="py-1" cols="12">
-                         <v-text-field 
+                         <v-text-field
                       outlined
                       dense
                       hide-details=""
@@ -114,12 +114,12 @@
                     </v-text-field>
                       </v-col>
                     </v-row>
-               
-                 
+
+
                   </v-col>
-                  
-                  
-                </v-row> 
+
+
+                </v-row>
                 <v-row>
                   <v-col>
                     <v-card-actions>
@@ -134,7 +134,7 @@
                   Save
                 </v-btn>
               </v-card-actions>
-                    
+
                     </v-col></v-row></v-container
               >
             </v-card>
@@ -144,7 +144,7 @@
       </v-dialog>
     </v-form>
 
-   
+
     <!---------------------------------------------------------------------- datatable  -->
     <v-data-table
       id="table"
@@ -158,8 +158,8 @@
     >
       <template v-slot:top>
         <v-card-actions>
-      
-           
+
+
           <v-btn
             color="#00794b"
             depressed
@@ -170,7 +170,7 @@
           >
             Add New
           </v-btn>
-          <v-spacer></v-spacer>     
+          <v-spacer></v-spacer>
             <v-text-field
               v-model="search"
               small
@@ -179,7 +179,7 @@
               hide-details=""
               label="Search"
               @keyup="getData"
-            ></v-text-field> 
+            ></v-text-field>
           <v-btn
             color="orange"
             style="text-transform: none"
@@ -198,9 +198,9 @@
         slot="progress"
         color="green"
         indeterminate
-      ></v-progress-linear> 
+      ></v-progress-linear>
       <!-- btn -->
-      <template v-slot:[`item.id`]="{ item }"> 
+      <template v-slot:[`item.id`]="{ item }">
 
         <v-btn
           class="px-1 btn btn-primary text-white"
@@ -211,7 +211,7 @@
           <small><v-icon size="15"> mdi-pencil </v-icon> Edit </small>
         </v-btn>
       </template>
-   <template v-slot:[`item.name`]="{ item }"> 
+   <template v-slot:[`item.name`]="{ item }">
 
         {{ item.name }}<br> <small>{{ item.description }}</small>
       </template>
@@ -227,9 +227,9 @@
     </div>
   </div>
 </template>
- 
- 
-<style> 
+
+
+<style>
 .dropzonexx {
   position: absolute;
   top: 260px;
@@ -254,23 +254,23 @@ export default {
   // declarations
   data: () => ({
     page: 1,
-    search: "", 
+    search: "",
 
     editedIndex: -1,
     formRules: [(v) => !!v || "This is required"],
-    dialog: false, 
-    progressBar: true, 
+    dialog: false,
+    progressBar: true,
     data: [],
-    headers: [ 
+    headers: [
       { class: "border", text: "Service name", value: "name" },
-      { class: "border", text: "Service Fee / Amount", value: "amount" }, 
+      { class: "border", text: "Service Fee / Amount", value: "amount" },
       { class: "border", text: "Action", value: "id", sortable: false },
     ],
     form: {
       picture: "",
       name: "",
       description: "",
-      amount: "", 
+      amount: "",
       handled_by: '',
       id: "",
     },
@@ -284,11 +284,11 @@ export default {
       dictDefaultMessage:
         "<div style='border: dashed 1px orange;   margin-top: -25px; padding: 5px; font-size: 15px;'> <span style='font-size: 25px; padding-left: 20px; color: blue;' class='mdi mdi-camera'></span> Upload </div> ",
     },
- 
+
   }),
 
   // load
-  mounted() {  
+  mounted() {
     this.getData();
   },
 
@@ -309,7 +309,7 @@ export default {
       });
     },
 
- 
+
 
     async getData() {
       this.progressBar = true;
@@ -317,7 +317,7 @@ export default {
         .get("/api/vet/services/list", {
           params: {
             page: this.page,
-            search: this.search, 
+            search: this.search,
           },
         })
         .then((result) => {
@@ -339,7 +339,7 @@ export default {
           confirmButtonText: "Yes",
           cancelButtonText: "No",
           showLoaderOnConfirm: true,
-          preConfirm: async () => { 
+          preConfirm: async () => {
             const { data } = await axios.post(
               "/api/vet/services/save",
               this.form
@@ -355,7 +355,7 @@ export default {
               Object.assign(this.data.data[this.editedIndex], result.value);
             } else {
               this.data.data.push(result.value);
-            } 
+            }
             this.close();
             Swal.fire({
               icon: "success",
@@ -384,7 +384,7 @@ export default {
       }
       this.editedIndex = -1;
     },
-     
+
   },
   //new of update title
   computed: {

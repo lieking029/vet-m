@@ -22,7 +22,7 @@
                 class="m-0 p-0 pt-0 justify-center text-center text-caption"
                 :class="hover ? 'text-white' : ''"
               >
-                <v-img height="200" :src="'/img/' + a.img + '.png'"></v-img>
+                <v-img height="200" :src="'https://provincial-veterinary-clinic.herokuapp.com/img/' + a.img + '.png'"></v-img>
               </v-card-text>
             </v-card>
           </v-hover>
@@ -136,7 +136,7 @@
       </v-card>
     </v-dialog>
   </v-card-text>
-</template> 
+</template>
 
 <script>
 import { mapGetters } from "vuex";
@@ -185,18 +185,18 @@ export default {
   methods: {
     chooseParameter(row) {
 
-      this.param.row = row; 
+      this.param.row = row;
       switch (row) {
         case "a":
         case "b":
         case "c":
           this.getCourseType();
           this.getYearType();
-          this.getStatusType(); 
+          this.getStatusType();
            this.param.val = 0;
-        break; 
+        break;
         default: this.param.val = 1; break;
-      } 
+      }
       this.dialog = true;
     },
 
@@ -241,7 +241,7 @@ export default {
     },
 
     async exporting(type) {
-      this.param.type = type;  
+      this.param.type = type;
           if (type == "pdf") {
             await axios({
               url: "/api/report/export",
@@ -281,7 +281,7 @@ export default {
                 responseType: "arraybuffer",
                 params: this.param,
               })
-              .then((res) => { 
+              .then((res) => {
                 let blob = new Blob([res.data], {
                   type: "application/excel",
                 });
@@ -296,8 +296,8 @@ export default {
                   message: "Successfully exported.",
                 };
               });
-          } 
- 
+          }
+
     },
   },
 };

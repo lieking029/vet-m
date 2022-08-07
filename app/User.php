@@ -4,17 +4,18 @@ namespace App;
 
 use App\Notifications\ResetPassword;
 use App\Notifications\VerifyEmail;
-use Illuminate\Foundation\Auth\User as Authenticatable; 
-use Tymon\JWTAuth\Contracts\JWTSubject;  
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Tymon\JWTAuth\Contracts\JWTSubject;
 use Spatie\Permission\Traits\HasRoles;
-use Illuminate\Notifications\Notifiable; 
+use Illuminate\Notifications\Notifiable;
 
 
 class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
-{ 
-    use Notifiable, HasRoles; 
+{
+    use Notifiable, HasRoles;
+
     protected $guard_name = 'api';
-   
+
     protected $guarded = ['id'];
     /**
      * The attributes that should be hidden for arrays.
@@ -52,7 +53,7 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
     {
         return 'https://www.gravatar.com/avatar/'.md5(strtolower($this->email)).'.jpg?s=200&d=mm';
     }
-    public function getPermissionslistAttribute(){ 
+    public function getPermissionslistAttribute(){
         return  \Auth::user()->getDirectPermissions()->pluck('name');
     }
 
@@ -107,7 +108,7 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
     {
         return '';
     }
-  
+
 
     public static function getUserPermissions($user)
     {
@@ -118,7 +119,7 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
     {
         return [];
     }
-     
+
 
 
     /**
@@ -142,7 +143,7 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
     }
 
     public function getFullnameAttribute(){
-        return  $this->last_name . ', '. $this->first_name . ($this->middle_name? ' '. substr($this->middle_name,0,1).".":''); 
+        return  $this->last_name . ', '. $this->first_name . ($this->middle_name? ' '. substr($this->middle_name,0,1).".":'');
     }
 
     /**
@@ -157,6 +158,6 @@ class User extends Authenticatable implements JWTSubject //, MustVerifyEmail
         return $value;
     }
 
-    
-  
+
+
 }
