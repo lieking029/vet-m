@@ -14,7 +14,7 @@ class CreateTblGeneralsTable extends Migration
     public function up()
     {
         Schema::create('tbl_generals', function (Blueprint $table) {
-            $table->id();  
+            $table->bigIncrements('id'); 
             $table->text('name');
             $table->text('description')->nullable();  
             $table->text('group')->nullable();  

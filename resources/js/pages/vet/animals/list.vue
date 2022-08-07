@@ -32,7 +32,7 @@
                                 height="190"
                                 :src="
                                   form.picture
-                                    ? '/storage/files/vet/animals/picture/' +
+                                    ? '../../public/storage/files/vet/animals/picture/' +
                                       form.picture
                                     : '/img/pets/a1.jpg'
                                 "
