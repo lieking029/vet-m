@@ -196,7 +196,7 @@
           <v-col class="text-center mt-12" cols="12" sm="4">
             <v-col>
               <v-container>
-                <v-img contain width="400" src="https://provincial-veterinary-clinic.herokuapp.com/img/Register/a11.png"></v-img>
+                <v-img contain width="400" src="https://provincial-veterinary-clinic.herokuapp.com/img/Register/a11.PNG"></v-img>
               </v-container>
             </v-col>
           </v-col>
