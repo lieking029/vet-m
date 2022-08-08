@@ -7,7 +7,7 @@
         :aspect-ratio="5 / 1"
         style="padding-top: 30px"
         class="p-4"
-        src="https://walrus-app-tna7x.ondigitalocean.app/img/Register/a10.jpg"
+        src="https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
       >
         <v-card-text class="text-white">
           <v-row>
