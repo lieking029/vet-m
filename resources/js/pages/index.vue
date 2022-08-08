@@ -7,7 +7,7 @@
         :aspect-ratio="5 / 1"
         style="padding-top: 30px"
         class="p-4"
-        src="https://walrus-app-tna7x.ondigitalocean.app/img/Register/a7.jpg"
+        src="https://walrus-app-tna7x.ondigitalocean.app/img/Register/a10.jpg"
       >
         <v-card-text class="text-white">
           <v-row>
