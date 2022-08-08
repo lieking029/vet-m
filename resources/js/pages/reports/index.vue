@@ -22,7 +22,7 @@
                 class="m-0 p-0 pt-0 justify-center text-center text-caption"
                 :class="hover ? 'text-white' : ''"
               >
-                <v-img height="200" :src="'https://provincial-veterinary-clinic.herokuapp.com/img/' + a.img + '.png'"></v-img>
+                <v-img height="200" :src="'https://walrus-app-tna7x.ondigitalocean.app/img/' + a.img + '.png'"></v-img>
               </v-card-text>
             </v-card>
           </v-hover>

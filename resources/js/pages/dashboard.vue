@@ -98,7 +98,7 @@
                 >
 
 
-                <v-img v-if="v.pet.picture" :src="'https://provincial-veterinary-clinic.herokuapp.com/storage/files/vet/animal/'+v.pet.picture"></v-img>
+                <v-img v-if="v.pet.picture" :src="'https://walrus-app-tna7x.ondigitalocean.app/storage/files/vet/animal/'+v.pet.picture"></v-img>
                 </v-avatar>
                 <strong > <div class="text-h6">{{ v.pet.name  }}</div>
                   <small>{{ v.dated }}</small></strong>
@@ -204,13 +204,13 @@ export default {
 
         this.items = [
 
-          { text: "My Pets", value: result.data.pets, image: "https://provincial-veterinary-clinic.herokuapp.com/img/Dashboard/aaaa.png" },
-          { text: "My Animals", value:  result.data.animals, image: "https://provincial-veterinary-clinic.herokuapp.com/img/Dashboard/aaaaaa.png" },
+          { text: "My Pets", value: result.data.pets, image: "https://walrus-app-tna7x.ondigitalocean.app/img/Dashboard/aaaa.png" },
+          { text: "My Animals", value:  result.data.animals, image: "https://walrus-app-tna7x.ondigitalocean.app/img/Dashboard/aaaaaa.png" },
           { text: "Appointments",
             value: result.data.appointments,
-            image: "https://provincial-veterinary-clinic.herokuapp.com/img/Dashboard/aaaaa.png",
+            image: "https://walrus-app-tna7x.ondigitalocean.app/img/Dashboard/aaaaa.png",
           },
-          { text: "Orders", value:  result.data.orders, image: "https://provincial-veterinary-clinic.herokuapp.com/img/Dashboard/aaa.png" },
+          { text: "Orders", value:  result.data.orders, image: "https://walrus-app-tna7x.ondigitalocean.app/img/Dashboard/aaa.png" },
 
         ]
       });

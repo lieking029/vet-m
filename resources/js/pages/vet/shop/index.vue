@@ -100,7 +100,7 @@
                           <v-col cols="5">
                             <v-img
                               :src="
-                                `https://provincial-veterinary-clinic.herokuapp.com/storage/files/vet/products/` + item.picture
+                                `https://walrus-app-tna7x.ondigitalocean.app/storage/files/vet/products/` + item.picture
                               "
                             ></v-img
                           ></v-col>
@@ -186,7 +186,7 @@
               <v-row no-gutters>
                 <v-col cols="12">
                   <v-img
-                    :src="`https://provincial-veterinary-clinic.herokuapp.com/storage/files/vet/products/` + vals.picture"
+                    :src="`https://walrus-app-tna7x.ondigitalocean.app/storage/files/vet/products/` + vals.picture"
                     height="270px"
                   >
                     <span
@@ -233,7 +233,7 @@
                 <v-col cols="12" sm="6">
                   <v-img
                     height="270px"
-                    :src="'https://provincial-veterinary-clinic.herokuapp.com/storage/files/vet/products/' + form_cart.picture"
+                    :src="'https://walrus-app-tna7x.ondigitalocean.app/storage/files/vet/products/' + form_cart.picture"
                   ></v-img>
                 </v-col>
                 <v-col cols="12" sm="6">

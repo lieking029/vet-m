@@ -114,7 +114,7 @@
             <v-row>
               <v-col cols="12" lg="3">
                 <v-card width="150" height="150" class="p-2 m-2">
-                  <v-img width="130" height="130" src="https://provincial-veterinary-clinic.herokuapp.com/img/Dashboard/logo.png"> </v-img
+                  <v-img width="130" height="130" src="https://walrus-app-tna7x.ondigitalocean.app/img/Dashboard/logo.png"> </v-img
                 ></v-card>
               </v-col>
               <v-col cols="12" lg="9">

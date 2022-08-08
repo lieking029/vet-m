@@ -51,8 +51,8 @@
                             height="190"
                             :src="
                               form.picture
-                                ? '../../../../../public/storage/files/vet/pets/picture/' + form.picture
-                                    : 'https://provincial-veterinary-clinic.herokuapp.com/img/Pets/a1.jpg'
+                                ? 'https://walrus-app-tna7x.ondigitalocean.app/storage/files/vet/pets/picture/' + form.picture
+                                    : 'https://walrus-app-tna7x.ondigitalocean.app/img/Pets/a1.jpg'
                             "
                           >
                           </v-img>
@@ -627,7 +627,7 @@
           contain
           width="70"
           height="70"
-          :src="'/storage/files/vet/pets/picture/' + item.picture"
+          :src="'https://walrus-app-tna7x.ondigitalocean.app/storage/files/vet/pets/picture/' + item.picture"
         ></v-img>
       </template>
 

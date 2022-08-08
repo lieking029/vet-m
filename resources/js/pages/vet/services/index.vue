@@ -37,7 +37,7 @@
               <v-row no-gutters>
                 <v-col cols="12" sm="12">
                   <v-img
-                    :src="`https://provincial-veterinary-clinic.herokuapp.com/storage/files/vet/services/` + vals.picture"
+                    :src="`https://walrus-app-tna7x.ondigitalocean.app/storage/files/vet/services/` + vals.picture"
                     height="200px"
                   >
                     <span

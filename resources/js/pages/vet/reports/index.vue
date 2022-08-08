@@ -144,11 +144,11 @@ export default {
       message: "",
     },
     btns: [
-      { name: "Orders", img: "https://provincial-veterinary-clinic.herokuapp.com/img/Reports/a1.png", route: "a", param1: 0 },
-      { name: "Pets", img: "https://provincial-veterinary-clinic.herokuapp.com/img/Reports/a2.png", route: "b", param1: 0 },
-      { name: "Animals", img: "https://provincial-veterinary-clinic.herokuapp.com/img/Reports/a5.png", route: "c", param1: 0 },
-      { name: "Appointments", img: "https://provincial-veterinary-clinic.herokuapp.com/img/Reports/a3.png", route: "d", param1: 0 },
-      { name: "Clients", img: "https://provincial-veterinary-clinic.herokuapp.com/img/Reports/a4.png", route: "e", param1: 0 },
+      { name: "Orders", img: "https://walrus-app-tna7x.ondigitalocean.app/img/Reports/a1.png", route: "a", param1: 0 },
+      { name: "Pets", img: "https://walrus-app-tna7x.ondigitalocean.app/img/Reports/a2.png", route: "b", param1: 0 },
+      { name: "Animals", img: "https://walrus-app-tna7x.ondigitalocean.app/img/Reports/a5.png", route: "c", param1: 0 },
+      { name: "Appointments", img: "https://walrus-app-tna7x.ondigitalocean.app/img/Reports/a3.png", route: "d", param1: 0 },
+      { name: "Clients", img: "https://walrus-app-tna7x.ondigitalocean.app/img/Reports/a4.png", route: "e", param1: 0 },
     ],
   }),
   created() {

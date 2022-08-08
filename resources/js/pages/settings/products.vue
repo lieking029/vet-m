@@ -27,8 +27,8 @@
                         height="230"
                         :src="
                           form.picture
-                            ? 'https://provincial-veterinary-clinic.herokuapp.com/storage/files/vet/products/' + form.picture
-                            : 'https://provincial-veterinary-clinic.herokuapp.com/img/Settings/a1.jpg'
+                            ? 'https://walrus-app-tna7x.ondigitalocean.app/storage/files/vet/products/' + form.picture
+                            : 'https://walrus-app-tna7x.ondigitalocean.app/img/Settings/a1.jpg'
                         "
                       >
                       </v-img>

@@ -32,9 +32,9 @@
                                 height="190"
                                 :src="
                                   form.picture
-                                    ? '../../public/storage/files/vet/animals/picture/' +
+                                    ? 'https://walrus-app-tna7x.ondigitalocean.app/storage/files/vet/animals/picture/' +
                                       form.picture
-                                    : 'https://provincial-veterinary-clinic.herokuapp.com/img/Pets/a1.jpg'
+                                    : 'https://walrus-app-tna7x.ondigitalocean.app/img/Pets/a1.jpg'
                                 "
                               >
                               <!-- </img> -->

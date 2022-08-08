@@ -50,8 +50,8 @@
                             height="190"
                             :src="
                               form.picture
-                                ? 'https://provincial-veterinary-clinic.herokuapp.com/storage/files/vet/pets/picture/' + form.picture
-                                : 'https://provincial-veterinary-clinic.herokuapp.com/img/Pets/a1.jpg'
+                                ? 'https://walrus-app-tna7x.ondigitalocean.app/storage/files/vet/pets/picture/' + form.picture
+                                : 'https://walrus-app-tna7x.ondigitalocean.app/img/Pets/a1.jpg'
                             "
                           >
                           </v-img>
@@ -629,7 +629,7 @@
               <v-img
                 contain
                 v-if="!active"
-                :src="n.picture?'https://provincial-veterinary-clinic.herokuapp.com/storage/files/vet/pets/picture/' + n.picture:'https://provincial-veterinary-clinic.herokuapp.com/img/Pets/a1.jpg'"
+                :src="n.picture?'https://walrus-app-tna7x.ondigitalocean.app/storage/files/vet/pets/picture/' + n.picture:'https://walrus-app-tna7x.ondigitalocean.app/img/Pets/a1.jpg'"
                 class="text-right p-2 my-2"
                 max-height="280"
                 min-height="280"

@@ -7,7 +7,7 @@
         :aspect-ratio="5 / 1"
         style="padding-top: 30px"
         class="p-4"
-        src="https://provincial-veterinary-clinic.herokuapp.com/img/Register/a10.jpg"
+        src="https://walrus-app-tna7x.ondigitalocean.app/img/Register/a10.jpg"
       >
         <v-card-text class="text-white">
           <v-row>
@@ -77,7 +77,7 @@
                 width="400"
                 height="400"
                 contain
-                src="https://provincial-veterinary-clinic.herokuapp.com/img/Register/a3.png"
+                src="https://walrus-app-tna7x.ondigitalocean.app/img/Register/a3.png"
               ></v-img>
             </v-col>
           </v-row>
@@ -86,7 +86,7 @@
     </v-col>
     <v-col cols="12">
       <v-card>
-        <v-img contain src="https://provincial-veterinary-clinic.herokuapp.com/img/Register/a7.jpg">
+        <v-img contain src="https://walrus-app-tna7x.ondigitalocean.app/img/Register/a7.jpg">
           <v-container>
             <v-row no-gutters>
               <v-col cols="12" sm="6">
@@ -139,7 +139,7 @@
                     </v-carousel-item>
                   </v-carousel> <v-img
                               height="400"
-                              src="https://provincial-veterinary-clinic.herokuapp.com/img/Register/a4.png"
+                              src="https://walrus-app-tna7x.ondigitalocean.app/img/Register/a4.png"
                             ></v-img>
                 </v-card>
               </v-col>
@@ -151,7 +151,7 @@
                 top: 60px;
                 position: absolute;
               "
-              src="https://provincial-veterinary-clinic.herokuapp.com/img/Register/a6.png"
+              src="https://walrus-app-tna7x.ondigitalocean.app/img/Register/a6.png"
             ></v-img>
           </v-container>
         </v-img>
@@ -196,7 +196,7 @@
           <v-col class="text-center mt-12" cols="12" sm="4">
             <v-col>
               <v-container>
-                <v-img contain width="400" src="https://provincial-veterinary-clinic.herokuapp.com/img/Register/a11.PNG"></v-img>
+                <v-img contain width="400" src="https://walrus-app-tna7x.ondigitalocean.app/img/Register/a11.PNG"></v-img>
               </v-container>
             </v-col>
           </v-col>

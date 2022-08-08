@@ -108,7 +108,7 @@
                   <v-img
                     width="190"
                     height="190"
-                    :src="(form.picture? 'https://provincial-veterinary-clinic.herokuapp.com/storage/files/vet/user/'+form.picture :'https://provincial-veterinary-clinic.herokuapp.com/img/profile.png')"
+                    :src="(form.picture? 'https://walrus-app-tna7x.ondigitalocean.app/storage/files/vet/user/'+form.picture :'https://provincial-veterinary-clinic.herokuapp.com/img/profile.png')"
                   >
                   </v-img><v-card-actions>
                     <vue-dropzone
