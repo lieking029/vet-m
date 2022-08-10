@@ -1,7 +1,7 @@
 <template>
   <div>
      <guestnav />
-    <v-img height="780" src="https://walrus-app-tna7x.ondigitalocean.app/img/register/a9.jpg">
+    <v-img height="780" src="https://provincial-veterinary-clinic-po9ld.ondigitalocean.app/img/register/a9.jpg">
       <br /><br /><br />
           <v-card-text class="">
     <v-container>

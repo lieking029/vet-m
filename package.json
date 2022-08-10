@@ -46,7 +46,6 @@
         "vuex-router-sync": "^5.0.0",
         "webpack-bundle-analyzer": "^3.9.0"
     },
-    
     "name": "myapp",
     "description": "a really cool app",
     "version": "1.0.0",

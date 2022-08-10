@@ -1,7 +1,7 @@
 <template>
   <div>
     <guestnav />
-    <v-img height="760" src="https://walrus-app-tna7x.ondigitalocean.app/img/Register/a9.jpg">
+    <v-img height="760" src="https://provincial-veterinary-clinic-po9ld.ondigitalocean.app/img/Register/a9.jpg">
 
     <v-overlay :value="overlay">
       <v-progress-circular
